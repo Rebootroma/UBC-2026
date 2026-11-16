@@ -15,6 +15,45 @@ A dollar account that an adult child sets up for an older or low-vision parent. 
 
 **The pitch leads with the hold, not the voice.** A plain talking wallet is the most common ElevenLabs entry. A hold that the contract enforces and a guardian can cancel is what the others do not have.
 
+## Prizes we can win, and why we are not chasing Solana or Gemini
+
+Added 2026-11-16, after the question came up of swapping in Best use of Solana and the Gemini bounty because they pay more.
+
+**What this project can win.** The rules allow exactly one main track, and the other prizes stack on top of it.
+
+| Prize | Amount | Who picks |
+| --- | --- | --- |
+| Consumer Track Winner | $2,000 | UBC representative |
+| Best use of Arc (within Consumer) | $1,000 | Arc representative |
+| QuickNode Streams bounty | $500 | QuickNode and UBC |
+| ElevenLabs bounty | 3 months of Scale tier per member | ElevenLabs and UBC |
+| Official UBC Winner | $2,500 / $1,000 / $500 (1st also gets 3 months of ElevenLabs Pro per member) | UBC team |
+
+Winning all of them would be $6,000 in cash plus the ElevenLabs perks. The participation prize comes on top for any complete, working submission. None of it is paid unless the whole team is in Austin on Sat Nov 21.
+
+**What it cannot win.**
+
+- The Agentic Payments and DeFi tracks, because only one main track is allowed.
+- Best use of Solana, because it cannot be combined with Best use of Arc.
+- The Gemini bounty, because the project does not use the Gemini Prediction Markets API.
+- Grok Bot is allowed by the rules but we are not targeting it (see the top of this document).
+
+**Recommendation: keep the plan as it is.** The reasons, one per proposed change:
+
+- **Dropping ElevenLabs gains nothing.** Bounties stack without limit, so ElevenLabs does not block Gemini or Solana. Voice is also half of the demo.
+- **Gemini cannot be added on.** The bounty needs the Prediction Markets API doing real work in the product. Prediction markets inside a scam-protection wallet for older users contradicts the pitch, so entering Gemini means building a different project.
+- **Solana instead of Arc is $500 more for a weaker position.** It adds an estimated 6–10 hours in Anchor and Rust, and nobody on the team has deployed a contract. The Circle passkey wallet in this plan is the Arc one, so the wallet work would restart. Voice wallets have already won Solana prizes twice (see [`IDEAS.md`](IDEAS.md)).
+- **Solana and Gemini together is the liquidation-odds guard** from [`IDEAS.md`](IDEAS.md). Its ceiling is $9,000 against $6,000 here. It is also the largest build (40–45 person-hours), was ranked last for buildability, and sits in the most crowded theme. Gemini's data terms may prohibit its core mechanism, and that question is still open.
+
+A higher ceiling is not a higher expected result. The extra $3,000 on paper does not make up for lower odds in a larger field with four build days left.
+
+**What would change this.**
+
+- The belief that the Arc consumer field is thinner is a guess. The project gallery is unpublished, so nobody has counted.
+- If someone on the team has shipped an Anchor program, the Solana estimate above is too pessimistic. Say so.
+
+**If the team still wants the Gemini money,** the only switch worth considering is the guarded research agent on Arc: Agentic Payments track, the same chain and tools, and the same $6,000 ceiling with an Official Winner place. It needs the redesign described in [`IDEAS.md`](IDEAS.md) and Gemini's answer on the data terms. Gemini office hours are today, Mon Nov 16, 7:00–8:00 PM CST. Decide tonight; a switch after today leaves too little time.
+
 ## Decisions to confirm as a team
 
 Each was the recommended option in the review. Changing one may change the sections below it.
