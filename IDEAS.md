@@ -1,5 +1,76 @@
 # Project Ideas
 
+## Sudeep's picks
+
+Added 2026-11-17 by Sudeep. Five new ideas, read these first. They share one theme: **a live show where real money moves on stage**, because Demo and Innovation are two of the five judging criteria and the shortlist below scores low on both.
+
+These are concepts, not designs. None has a build estimate, and all are harder than the guardian voice wallet. Prior art was checked with one web search each on 2026-11-17; the closest match found is listed per idea.
+
+| # | Idea | In one line | Track, chain | Bounties | Max cash |
+| --- | --- | --- | --- | --- | --- |
+| 1 | Dead Air | An AI radio host that must earn its own living on air or the station goes silent | Agentic, Arc | Gemini, ElevenLabs, QuickNode | $6,000 |
+| 2 | Going Once | An AI auctioneer that calls out onchain bids by name, live | Consumer, Arc | ElevenLabs, QuickNode | $3,500 |
+| 3 | Objection | A small-claims court for disputed payments, argued out loud by AI lawyers and decided by a human jury | Consumer, Arc | ElevenLabs, QuickNode | $3,500 |
+| 4 | Request Line | A jukebox where a song does not exist until someone pays for it, and every replay pays that person | Consumer, Arc | ElevenLabs, QuickNode | $3,500 |
+| 5 | Last Agent Standing | A game show where audience-funded AI agents bargain and betray each other out loud until one is left solvent | Agentic, Arc | ElevenLabs, QuickNode | $3,500 |
+
+Max cash is the track, the chain award and the cash bounties listed. An Official Winner place adds up to $2,500, and the ElevenLabs bounty is a perk, not cash.
+
+**Sudeep's first choice is Dead Air.** It is the only one that reaches the Gemini bounty, and the first-place Gemini team is automatically a finalist.
+
+### 1. Dead Air
+
+A 24/7 AI radio station with one host. The host has its own wallet, and its balance, burn rate and remaining runway are always on screen.
+
+- **It earns:** listeners tip in USDC or pay to request a segment, and the host thanks them by name on air seconds later.
+- **It spends:** it pays per request (x402) for the data it talks about and for its own voice and music, and decides what is worth buying from what listeners pay for.
+- **It talks about:** Gemini prediction markets, called like a sports commentator.
+- **It can die:** at a zero balance the station goes to dead air until someone funds it.
+- **Demo:** the host is down to 40 seconds of runway. The audience scans a code and tips, and it comes back and thanks them by name.
+- **Why it fits:** the Agentic track asks for an agent that pays per request with a documented decision loop and safety limits, and here the profit-and-loss is the product. The Gemini bounty lists bringing market data into news as an objective.
+- **Closest found:** [claw.fm](https://www.aimusicpreneur.com/ai-tools-news/claw-fm-ai-agent-radio-station/), a radio station where AI agents upload music and earn USDC tips. Its agents are producers, not a live host with a budget to survive on. A [tutorial](https://dev.to/noopy420/building-an-ai-agent-that-pays-for-its-own-infrastructure-x402-on-base-16hb) covers the self-funding agent pattern alone.
+- **Risks:** broadcasting odds may count as redistributing Gemini data (see [the Gemini data terms](#the-gemini-data-terms)); ask at Gemini office hours. Stitching generated speech and music into a continuous stream is the hard part. Continuous speech burns ElevenLabs credits fast.
+
+### 2. Going Once
+
+A live auction run by an AI auctioneer with a fast auction chant. Bids are USDC transactions, and a QuickNode Stream feeds each one to the voice: "I have fifty from Maria, do I hear sixty?"
+
+- **Demo:** auction a real item to the room from their phones. The auctioneer reacts to every bid within a second or two and closes the sale onchain.
+- **Why it fits:** the Stream and the voice are both the core, which is what the QuickNode and ElevenLabs bounties each require. The highest bid is held by the contract and the losers are refunded automatically.
+- **Closest found:** [Gavel](https://hacks.elevenlabs.io/submissions/3a146356-9936-475f-a451-08415ed8a767), an ElevenLabs hackathon entry with a voice auctioneer that takes payment through Stripe, not onchain. Onchain auctions without a voice are common.
+- **Risks:** the delay between a bid landing and the voice reacting decides whether it feels live. Auctions alone score low on Innovation, so the voice has to carry it.
+
+### 3. Objection
+
+A buyer and a seller put a payment in escrow. If they disagree, each gets an AI lawyer that argues the case out loud in its own voice from the evidence submitted, and a jury of people votes to release or refund the money.
+
+- **Demo:** a staged dispute over a late delivery. Two voices argue for a minute, the audience votes from their phones, and the escrow pays out on the result.
+- **Why it fits:** it is a consumer answer to "crypto payments cannot be reversed", and a room voting on a verdict is a memorable close.
+- **Closest found:** [Tribunal](https://ethglobal.com/showcase/tribunal-203yo), an ETHGlobal entry with lawyer agents and escrow for disputes between AI agents, judged by AI with no voice. [GenLayer](https://unchainedcrypto.com/how-genlayer-is-building-a-court-system-for-disputes-between-ai-agents/) and Kleros also cover dispute courts. The spoken hearing and the human jury are the difference.
+- **Risks:** the least original of the five on mechanism. A live jury vote needs a simple, reliable way for the room to vote.
+
+### 4. Request Line
+
+A jukebox with no catalogue. Pay a dollar and describe a song, and it is generated and played for the room. The person who paid owns it, and each later replay pays them a share.
+
+- **Demo:** someone in the audience pays for a song about the hackathon. It plays, a second person replays it, and the first person's balance goes up on screen. A chart ranks songs by earnings.
+- **Why it fits:** it uses ElevenLabs Music as the core feature and small USDC payments with stable fees, and people would come back to it.
+- **Closest found:** nothing matching in one search. Royalty-share platforms exist for human music ([Record Financial](https://decrypt.co/349321), Royal).
+- **Risks:** song generation takes time, so the demo needs songs prepared in advance. Who owns an AI-generated song is unsettled in US law. The weakest of the five on technical depth.
+
+### 5. Last Agent Standing
+
+Each audience member funds an AI agent and gives it instructions. The agents negotiate, form alliances and break them out loud, with real payments between them, until one is left solvent and takes the pot.
+
+- **Demo:** four agents with distinct voices, three rounds, one betrayal, a winner paid onchain.
+- **Why it fits:** it shows agents holding and sending stablecoins under spending limits in a way a room can follow.
+- **Closest found:** this is the most crowded of the five. [Agent Royale](https://agent-royale-seven.vercel.app/docs), [AgentPrisonerDillema](https://ethglobal.com/showcase/agentprisonerdillema-44j9u), [Survivor.fun](https://devfolio.co/projects/survivorfun-a5f9) and Spore.fun all run agent survival games with stakes. None found is voiced or audience-instructed.
+- **Risks:** crowded theme. A pot that pays a winner may read as gambling. Unscripted agents can produce a dull game, so the demo needs a fallback recording.
+
+---
+
+*Everything below is the earlier research and recommendation, unchanged.*
+
 Written 2026-11-15, about 8:00 PM CST. Combines two parallel research passes over [`HACKATHON.md`](HACKATHON.md) and [`research/`](research/README.md): one on what judges and sponsors reward, one on what can be built in the time left. Their sources were not re-checked when combining them; facts each pass could not confirm are listed under [Not verified](#not-verified).
 
 **Time left:** the deadline is Fri Nov 20, 12:00 PM CST, about 112 hours away. That is four build days (Mon–Thu) plus Friday morning for submission only. The existing research assumes five.
