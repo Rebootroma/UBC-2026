@@ -192,6 +192,8 @@ npm run dev                     # http://localhost:3000
 | `AGENTS_MODE` | optional | `deterministic` forces the no-LLM path |
 | `ALLOW_BROADCAST_ATTACKS` | optional | `true` lets the attack console send real (reverting) transactions |
 
+To create the three testnet-only keys, run `cast wallet new` three times (Foundry) and paste each private key into `web/.env.local`. Never share or commit them. Only the admin address needs faucet USDC.
+
 ### Deploy to Arc testnet
 
 ```bash

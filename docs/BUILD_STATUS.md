@@ -39,6 +39,14 @@ Last updated: 2026-11-19. Branch: `feat/resilienceos`. Only results we actually 
 
 To unblock: fund the admin, then `cd web && npm run chain -- deploy && npm run chain -- fund <amount> && npm run chain -- cohort`, run the replay, and record the hashes here.
 
+## Handoff (for a teammate continuing)
+
+1. Clone, check out `feat/resilienceos`, and follow README › Quick start.
+2. Private keys are not in the repo by design. Either get `web/.env.local` from the original builder through a private channel, or make new keys with `cast wallet new`. With new keys, the admin and oracle addresses above will change. That's fine: `deploy` grants the roles to whichever keys are in `.env.local`.
+3. Get free testnet USDC for the admin address at https://faucet.circle.com (Arc Testnet). No real money is involved.
+4. `cd web && npm run chain -- deploy && npm run chain -- fund 45 && npm run chain -- cohort`, then `npm run dev` and play the replay.
+5. Record the contract address and payout transaction hashes in this file and in the README, then commit.
+
 ## Commits
 
 | SHA | Milestone |
@@ -47,6 +55,7 @@ To unblock: fund the admin, then `cd web && npm run chain -- deploy && npm run c
 | `ae2dc83` | Settlement service, oracle, attack demos, agents, research docs |
 | `f9bab2c` | Command center UI |
 | `b5f70d4` | Unit, parity and E2E tests; analytics fixes |
+| `415379b` | README, strategy, build status, submission docs |
 
 ## Known issues and remaining work
 
