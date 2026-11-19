@@ -1,13 +1,21 @@
 {
   "network": "arc-testnet",
   "chainId": 5042002,
-  "reserve": null,
+  "reserve": "0x630080c9840cac6ff94d5d3f1681a89dcf5c4510",
   "token": "0x3600000000000000000000000000000000000000",
-  "deployBlock": 0,
-  "deployTx": null,
-  "admin": null,
-  "oracle": null,
-  "cohort": null,
-  "cohortRegistrationTxs": [],
-  "fundingTxs": []
+  "deployBlock": 73088774,
+  "deployTx": "0x1052cd44074166d6687dec367d1f16a577224ca9b1a301ac92d16c2e4e0e1386",
+  "admin": "0x183bBe4c2f5050d58055B6c6A4890927b6F67C6e",
+  "oracle": "0x613D761cE2E38287C4dF8Cc402884a60B63a450a",
+  "cohort": "C2611192231",
+  "cohortRegistrationTxs": [
+    "0x46b70f60dfae282c4ef3373e10d2d5dcf3ce1cf1a07771cc8afa1f00a5c5ec21",
+    "0xdd4c0c28fb991e4b362a816036e0254de44d8963fd041e23773ab25eedc221dd",
+    "0x3b0191bb348baefdd8f335f4e1c1c53e6ff11e42d465311bdb3984d3ad9f7427",
+    "0x2a06f48a9f0f8d62dfea3d4966093811d5fa40502f1ca07bd64d40d4ee9c843a"
+  ],
+  "fundingTxs": [
+    "0x3630c6982e7998d7b7912002c03a0050d6125c9665d6e534e3e4caffa6e08f62"
+  ],
+  "oracleGrantTx": "0x8049106b51fa3e08d9f3425d326486a762dcf1d48946c24a6ff40b4ef3cab82d"
 }

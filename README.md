@@ -47,7 +47,7 @@ Automated parametric payouts are not new (see Arbol, FloodFlash, Etherisc in [`d
 | Exposure model (wind, surge proxy, industry, proximity), with uncertainty shown | ✅ |
 | Layered observation validation: source hash, independent METAR parse, quality flags, neighbour outliers | ✅ |
 | `ParametricReserve` contract: oracle registry, EIP-712 observations, deterministic eligibility, replay protection, deferred payouts, pause | ✅ 30 Foundry tests |
-| Settlement service: oracle signs → `submitAndSettle` → receipt decoded → dashboard updated | ✅ verified on a local fork of Arc; Arc testnet deployment: see [Blockchain](#blockchain) |
+| Settlement service: oracle signs → `submitAndSettle` → receipt decoded → dashboard updated | ✅ live on Arc testnet: [example payout tx](https://explorer.testnet.arc.io/tx/0xf593411a8c2afe7467b00d6cd71a880caace68e24308357d42b4aed4cf3ed998) |
 | Attack console: forged oracle and duplicate payout, rejected by the contract's own revert | ✅ |
 | Five grounded AI agents (Claude, structured output, citation check, deterministic fallback) | ✅ |
 | Payout explorer from decoded chain logs, reserve accounting, scenario stress tests, basis risk | ✅ |
@@ -136,7 +136,8 @@ Five agents turn the event into explanations a business owner, an adjuster or a 
 | --- | --- |
 | Network | Arc testnet, chain ID `5042002`, RPC `https://rpc.testnet.arc.network`, explorer `https://explorer.testnet.arc.io` |
 | Settlement token | Circle USDC, ERC-20 interface `0x3600000000000000000000000000000000000000` (6 decimals) |
-| `ParametricReserve` | **Pending.** Deployment is waiting on faucet USDC for the deployer. The live address is always in `web/src/data/deployment.json` and in [`docs/BUILD_STATUS.md`](docs/BUILD_STATUS.md). |
+| `ParametricReserve` | [`0x630080c9840cac6ff94d5d3f1681a89dcf5c4510`](https://explorer.testnet.arc.io/address/0x630080c9840cac6ff94d5d3f1681a89dcf5c4510) (deploy tx [`0x1052cd44…`](https://explorer.testnet.arc.io/tx/0x1052cd44074166d6687dec367d1f16a577224ca9b1a301ac92d16c2e4e0e1386)). The current cohort and all transaction hashes are in `web/src/data/deployment.json`. |
+| Example payout | [`0xf593411a…`](https://explorer.testnet.arc.io/tx/0xf593411a8c2afe7467b00d6cd71a880caace68e24308357d42b4aed4cf3ed998): one signed KPSX observation (47 kt) paid 4 policies, 3.75 USDC in total |
 
 **Contract interface (summary)**
 
@@ -161,6 +162,55 @@ Five agents turn the event into explanations a business owner, an adjuster or a 
 | Bad source data | Schema, METAR re-parse, quality flags, neighbour outliers; missing data never triggers | Vitest |
 | LLM error or prompt injection | No tools or keys; schema + citation validation; deterministic fallback | Vitest |
 | Secrets | Keys only in `web/.env.local` (gitignored); never logged or committed | — |
+
+## Running the demo (presenter guide)
+
+Anyone on the team can run this. It takes about 5 minutes to set up, and the walkthrough runs 2:45. No real money is involved: everything is on Arc **testnet**, and its USDC comes free from a faucet and has no value.
+
+### 1. One-time setup
+
+1. Install [Node.js 20+](https://nodejs.org) and [Foundry](https://book.getfoundry.sh/getting-started/installation).
+2. Clone the repo and install (see [Installation](#installation)): `git checkout feat/resilienceos`, then `cd web && npm install`.
+3. **Keys.** The app needs `web/.env.local`, which is not in git. Choose one:
+   - **Use the existing deployment** (recommended). Get `web/.env.local` from the teammate who deployed, through a private DM, never GitHub or a public channel. The app then uses the deployed contract below.
+   - **Make your own deployment.** `cp .env.example .env.local`, then run `cast wallet new` three times and paste the keys in as admin, oracle and attacker. Get free USDC for the admin address at https://faucet.circle.com (pick **Arc Testnet**). Then run `npm run chain -- deploy && npm run chain -- fund 15 && npm run chain -- cohort` and commit the updated `web/src/data/deployment.json` (it holds addresses only, no keys).
+
+### 2. Before each run (about 1 minute)
+
+```bash
+cd web
+npm run chain -- status    # admin needs ≥ 0.5 USDC for gas; check reserveBalance
+npm run chain -- cohort    # registers 80 fresh, unpaid policies, so the payouts you show are new
+npm run dev                # open http://localhost:3000
+```
+
+- In the header, confirm **"Arc testnet · block …"** is shown. If it says "Contract not deployed", your `.env.local` or `deployment.json` is wrong.
+- Optionally, open the [reserve contract on the explorer](https://explorer.testnet.arc.io/address/0x630080c9840cac6ff94d5d3f1681a89dcf5c4510) in a second tab.
+- **Budget.** A full Beryl replay pays about 44 USDC at demo scale. When the reserve runs out, later claims show as **Deferred** (owed on chain). That's correct behaviour and worth pointing out. To pay everyone, top up the admin from the faucet and run `npm run chain -- fund <amount>`.
+
+### 3. The walkthrough
+
+Full script with lines to say: [`docs/DEMO_SCRIPT.md`](docs/DEMO_SCRIPT.md). The clicks:
+
+1. **Command Center.** Choose speed **45 min/s** and press **Play**. The storm moves, stations light up and business dots change colour by exposure.
+2. **Settlement gate.** The replay pauses automatically when a station reading meets a policy trigger (first: Palacios KPSX, 47 kt). The checklist turns green and a **transaction hash** appears. Click it to show the payout on the Arc explorer.
+3. **Business tab.** Click a paid business (Gulf Coast Hardware) and open **"Why this business was paid"**: the rule, the reading, the raw METAR, the transaction.
+4. **AI Intelligence.** Run **Coverage**, then **Integrity**. Agents cite facts and have no keys. Without `ANTHROPIC_API_KEY` they run in deterministic mode, which is labeled in the UI. Say so if asked.
+5. **Contracts & Security.** Click **Simulate against Arc** on the forged-oracle attack → `UnauthorizedOracle`. Click it on the duplicate payout → `NotEligible(AlreadySettledForEvent)`. Both rejections come from the live contract.
+6. **Payout Explorer**, then **Risk Analytics**: decoded on-chain payouts, live reserve balance, stress test (a 1.25× storm exceeds the reserve).
+7. Press **Play** again to let the storm finish. Paid businesses turn green.
+
+### 4. If something goes wrong
+
+| Symptom | Fix |
+| --- | --- |
+| Gate stuck on "Settling…" | The Arc RPC is slow. Keep talking about the checklist; it usually clears in 5 to 20 s. |
+| Red error at a gate | Read it out. Usually the admin is out of gas (`npm run chain -- status`). Show an earlier payout from the Payout Explorer instead. |
+| "already been settled" at the first gate | You skipped `npm run chain -- cohort`. Run it and reload. |
+| Map is blank | Check your internet connection (the basemap tiles load from CARTO). |
+| Everything after some point is "Deferred" | The reserve is empty. That's expected behaviour; see Budget above. |
+
+Never claim a payout the explorer doesn't show.
 
 ## Installation
 

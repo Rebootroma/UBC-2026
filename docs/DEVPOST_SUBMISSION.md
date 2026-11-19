@@ -41,4 +41,6 @@ k-of-n oracle signers over multiple data providers; live NWS feeds instead of a 
 Solidity, Foundry, OpenZeppelin, Circle Arc testnet, USDC, viem, Next.js, React, TypeScript, Tailwind, MapLibre GL, Recharts, Zod, Anthropic Claude (claude-opus-5-5, structured outputs), Vitest, Playwright. Data: NOAA NHC HURDAT2, NOAA ASOS via Iowa Environmental Mesonet, CARTO/OSM basemap.
 
 ## Contract addresses
-See README § Blockchain and docs/BUILD_STATUS.md (filled in at deployment).
+- `ParametricReserve` (Arc testnet): https://explorer.testnet.arc.io/address/0x630080c9840cac6ff94d5d3f1681a89dcf5c4510
+- Example payout: https://explorer.testnet.arc.io/tx/0xf593411a8c2afe7467b00d6cd71a880caace68e24308357d42b4aed4cf3ed998
+- USDC: `0x3600000000000000000000000000000000000000`

@@ -144,12 +144,12 @@ async function readReserveEvents(reserve: Address): Promise<ChainEvent[]> {
       const res: Response = await fetch(url, { cache: "no-store", signal: AbortSignal.timeout(8000) });
       if (!res.ok) throw new Error(`blockscout ${res.status}`);
       const body = (await res.json()) as {
-        items: { topics: (Hex | null)[]; data: Hex; tx_hash: Hex; block_number: number; index: number; block_timestamp?: string }[];
+        items: { topics: (Hex | null)[]; data: Hex; transaction_hash?: Hex; tx_hash?: Hex; block_number: number; index: number; block_timestamp?: string }[];
         next_page_params: Record<string, string | number> | null;
       };
       for (const it of body.items) {
         const ev = decode({ topics: it.topics.filter((t): t is Hex => !!t), data: it.data });
-        if (ev) out.push({ ...ev, txHash: it.tx_hash, blockNumber: String(it.block_number), logIndex: it.index, timestamp: it.block_timestamp ? Date.parse(it.block_timestamp) / 1000 : undefined });
+        if (ev) out.push({ ...ev, txHash: (it.transaction_hash ?? it.tx_hash)!, blockNumber: String(it.block_number), logIndex: it.index, timestamp: it.block_timestamp ? Date.parse(it.block_timestamp) / 1000 : undefined });
       }
       url = body.next_page_params
         ? `${EXPLORER}/api/v2/addresses/${reserve}/logs?${new URLSearchParams(Object.entries(body.next_page_params).map(([k, v]) => [k, String(v)]))}`
