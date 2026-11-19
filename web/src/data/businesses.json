@@ -1,0 +1,1967 @@
+[
+ {
+  "id": "RSL-0001",
+  "name": "Gulf Coast Hardware",
+  "industry": "Hardware & Supply",
+  "town": "Palacios",
+  "lat": 28.7089,
+  "lon": -96.2189,
+  "employees": 14,
+  "monthlyRevenueUsd": 85800,
+  "elevationM": 2,
+  "coastDistanceKm": 0.5,
+  "wallet": "0x7dBBCc62A98a124373eD2F2308409d9D24248Cd9",
+  "policy": {
+   "policyNumber": "RSL-P-0001",
+   "coverageUsd": 5000,
+   "payoutUnits": "500000",
+   "thresholdKt": 45,
+   "stations": [
+    "KPSX"
+   ],
+   "coverageStart": "2024-06-01T00:00:00Z",
+   "coverageEnd": "2024-11-30T23:59:59Z"
+  }
+ },
+ {
+  "id": "RSL-0002",
+  "name": "Redfish Pharmacy",
+  "industry": "Pharmacy",
+  "town": "Palacios",
+  "lat": 28.70655,
+  "lon": -96.21203,
+  "employees": 30,
+  "monthlyRevenueUsd": 160000,
+  "elevationM": 3,
+  "coastDistanceKm": 2.1,
+  "wallet": "0xFC2405F5C0cE4d4517F50E4eE98f25b452D41a8e",
+  "policy": {
+   "policyNumber": "RSL-P-0002",
+   "coverageUsd": 16000,
+   "payoutUnits": "1600000",
+   "thresholdKt": 50,
+   "stations": [
+    "KPSX"
+   ],
+   "coverageStart": "2024-06-01T00:00:00Z",
+   "coverageEnd": "2024-11-30T23:59:59Z"
+  }
+ },
+ {
+  "id": "RSL-0003",
+  "name": "Shoreline Taqueria",
+  "industry": "Restaurant",
+  "town": "Palacios",
+  "lat": 28.73109,
+  "lon": -96.24281,
+  "employees": 19,
+  "monthlyRevenueUsd": 77300,
+  "elevationM": 1,
+  "coastDistanceKm": 2.4,
+  "wallet": "0xF0709CB116f597ED9f8b5F4500770C4c7b054AfC",
+  "policy": {
+   "policyNumber": "RSL-P-0003",
+   "coverageUsd": 7500,
+   "payoutUnits": "750000",
+   "thresholdKt": 55,
+   "stations": [
+    "KPSX"
+   ],
+   "coverageStart": "2024-06-01T00:00:00Z",
+   "coverageEnd": "2024-11-30T23:59:59Z"
+  }
+ },
+ {
+  "id": "RSL-0004",
+  "name": "Harbor Taqueria",
+  "industry": "Restaurant",
+  "town": "Palacios",
+  "lat": 28.7058,
+  "lon": -96.21067,
+  "employees": 9,
+  "monthlyRevenueUsd": 37400,
+  "elevationM": 4,
+  "coastDistanceKm": 0.5,
+  "wallet": "0x756c247461f27a8B19C855d6A82Ec1cae9A1f555",
+  "policy": {
+   "policyNumber": "RSL-P-0004",
+   "coverageUsd": 3500,
+   "payoutUnits": "350000",
+   "thresholdKt": 45,
+   "stations": [
+    "KPSX"
+   ],
+   "coverageStart": "2024-06-01T00:00:00Z",
+   "coverageEnd": "2024-11-30T23:59:59Z"
+  }
+ },
+ {
+  "id": "RSL-0005",
+  "name": "Starboard Kids Academy",
+  "industry": "Childcare",
+  "town": "Palacios",
+  "lat": 28.69452,
+  "lon": -96.20434,
+  "employees": 5,
+  "monthlyRevenueUsd": 38400,
+  "elevationM": 4,
+  "coastDistanceKm": 0.9,
+  "wallet": "0xeA4761e69ff6397021B74237dEF536E1a0706998",
+  "policy": {
+   "policyNumber": "RSL-P-0005",
+   "coverageUsd": 4000,
+   "payoutUnits": "400000",
+   "thresholdKt": 40,
+   "stations": [
+    "KPSX"
+   ],
+   "coverageStart": "2024-06-01T00:00:00Z",
+   "coverageEnd": "2024-11-30T23:59:59Z"
+  }
+ },
+ {
+  "id": "RSL-0006",
+  "name": "Anchor Learning Center",
+  "industry": "Childcare",
+  "town": "Palacios",
+  "lat": 28.70154,
+  "lon": -96.24426,
+  "employees": 34,
+  "monthlyRevenueUsd": 155000,
+  "elevationM": 5,
+  "coastDistanceKm": 2.3,
+  "wallet": "0x247De667a01dfeef81bA24492a3369dd87A9c1bC",
+  "policy": {
+   "policyNumber": "RSL-P-0006",
+   "coverageUsd": 15500,
+   "payoutUnits": "1550000",
+   "thresholdKt": 55,
+   "stations": [
+    "KPSX"
+   ],
+   "coverageStart": "2024-06-01T00:00:00Z",
+   "coverageEnd": "2024-11-30T23:59:59Z"
+  }
+ },
+ {
+  "id": "RSL-0007",
+  "name": "Sea Breeze Freight",
+  "industry": "Logistics",
+  "town": "Bay City",
+  "lat": 29.01199,
+  "lon": -95.98153,
+  "employees": 32,
+  "monthlyRevenueUsd": 224500,
+  "elevationM": 15,
+  "coastDistanceKm": 24.9,
+  "wallet": "0xE95ea51EA974edF0eF45A673581F8f140e001EB6",
+  "policy": {
+   "policyNumber": "RSL-P-0007",
+   "coverageUsd": 22500,
+   "payoutUnits": "2250000",
+   "thresholdKt": 55,
+   "stations": [
+    "KBYY",
+    "KARM"
+   ],
+   "coverageStart": "2024-06-01T00:00:00Z",
+   "coverageEnd": "2024-11-30T23:59:59Z"
+  }
+ },
+ {
+  "id": "RSL-0008",
+  "name": "Sandbar Goods",
+  "industry": "Retail",
+  "town": "Bay City",
+  "lat": 29.01045,
+  "lon": -95.95168,
+  "employees": 19,
+  "monthlyRevenueUsd": 136300,
+  "elevationM": 17,
+  "coastDistanceKm": 24.9,
+  "wallet": "0x1C11F49a1e8E4DBcDe523618B8B66a8D10E5C977",
+  "policy": {
+   "policyNumber": "RSL-P-0008",
+   "coverageUsd": 13500,
+   "payoutUnits": "1350000",
+   "thresholdKt": 50,
+   "stations": [
+    "KBYY",
+    "KARM"
+   ],
+   "coverageStart": "2024-06-01T00:00:00Z",
+   "coverageEnd": "2024-11-30T23:59:59Z"
+  }
+ },
+ {
+  "id": "RSL-0009",
+  "name": "Shoreline Drug Store",
+  "industry": "Pharmacy",
+  "town": "Bay City",
+  "lat": 29.0145,
+  "lon": -95.99447,
+  "employees": 8,
+  "monthlyRevenueUsd": 49000,
+  "elevationM": 17,
+  "coastDistanceKm": 26.3,
+  "wallet": "0x501ec7F30E2Cee3Ce02a3dE06a2Ad32B2Cc8C2A4",
+  "policy": {
+   "policyNumber": "RSL-P-0009",
+   "coverageUsd": 5000,
+   "payoutUnits": "500000",
+   "thresholdKt": 55,
+   "stations": [
+    "KBYY",
+    "KARM"
+   ],
+   "coverageStart": "2024-06-01T00:00:00Z",
+   "coverageEnd": "2024-11-30T23:59:59Z"
+  }
+ },
+ {
+  "id": "RSL-0010",
+  "name": "Cypress Foods",
+  "industry": "Grocery",
+  "town": "Bay City",
+  "lat": 28.96855,
+  "lon": -95.97918,
+  "employees": 38,
+  "monthlyRevenueUsd": 234600,
+  "elevationM": 16,
+  "coastDistanceKm": 24.9,
+  "wallet": "0x4911bf637a97b6bB9180e3f88ff44Cc5C686E1dD",
+  "policy": {
+   "policyNumber": "RSL-P-0010",
+   "coverageUsd": 23500,
+   "payoutUnits": "2350000",
+   "thresholdKt": 45,
+   "stations": [
+    "KBYY"
+   ],
+   "coverageStart": "2024-06-01T00:00:00Z",
+   "coverageEnd": "2024-11-30T23:59:59Z"
+  }
+ },
+ {
+  "id": "RSL-0011",
+  "name": "Magnolia Grocery",
+  "industry": "Grocery",
+  "town": "Bay City",
+  "lat": 28.98765,
+  "lon": -96.01044,
+  "employees": 4,
+  "monthlyRevenueUsd": 29600,
+  "elevationM": 18,
+  "coastDistanceKm": 24.3,
+  "wallet": "0x28EcA459fC9b9406B4eB577De670Ec3c2F9E90ad",
+  "policy": {
+   "policyNumber": "RSL-P-0011",
+   "coverageUsd": 3000,
+   "payoutUnits": "300000",
+   "thresholdKt": 40,
+   "stations": [
+    "KBYY",
+    "KARM"
+   ],
+   "coverageStart": "2024-06-01T00:00:00Z",
+   "coverageEnd": "2024-11-30T23:59:59Z"
+  }
+ },
+ {
+  "id": "RSL-0012",
+  "name": "Cypress Tire & Lube",
+  "industry": "Auto Repair",
+  "town": "Bay City",
+  "lat": 28.97099,
+  "lon": -96.01366,
+  "employees": 9,
+  "monthlyRevenueUsd": 61400,
+  "elevationM": 14,
+  "coastDistanceKm": 25.9,
+  "wallet": "0xdE126254eE8475e0b846C9285593a6d3bbd4cBCC",
+  "policy": {
+   "policyNumber": "RSL-P-0012",
+   "coverageUsd": 6000,
+   "payoutUnits": "600000",
+   "thresholdKt": 45,
+   "stations": [
+    "KBYY",
+    "KARM"
+   ],
+   "coverageStart": "2024-06-01T00:00:00Z",
+   "coverageEnd": "2024-11-30T23:59:59Z"
+  }
+ },
+ {
+  "id": "RSL-0013",
+  "name": "Coastal Motel",
+  "industry": "Hospitality",
+  "town": "Matagorda",
+  "lat": 28.7302,
+  "lon": -95.95326,
+  "employees": 31,
+  "monthlyRevenueUsd": 232200,
+  "elevationM": 4,
+  "coastDistanceKm": 0.5,
+  "wallet": "0xba24BE7B30d31Bd10914d4ACa221dE76bE5C7172",
+  "policy": {
+   "policyNumber": "RSL-P-0013",
+   "coverageUsd": 23000,
+   "payoutUnits": "2300000",
+   "thresholdKt": 50,
+   "stations": [
+    "KBYY",
+    "KPSX"
+   ],
+   "coverageStart": "2024-06-01T00:00:00Z",
+   "coverageEnd": "2024-11-30T23:59:59Z"
+  }
+ },
+ {
+  "id": "RSL-0014",
+  "name": "Shoreline Garage",
+  "industry": "Auto Repair",
+  "town": "Matagorda",
+  "lat": 28.68831,
+  "lon": -95.97113,
+  "employees": 25,
+  "monthlyRevenueUsd": 173500,
+  "elevationM": 4,
+  "coastDistanceKm": 0.5,
+  "wallet": "0x5407604dd3a128cB38B2696d2C540Ec9Cf383646",
+  "policy": {
+   "policyNumber": "RSL-P-0014",
+   "coverageUsd": 17500,
+   "payoutUnits": "1750000",
+   "thresholdKt": 50,
+   "stations": [
+    "KPSX",
+    "KBYY"
+   ],
+   "coverageStart": "2024-06-01T00:00:00Z",
+   "coverageEnd": "2024-11-30T23:59:59Z"
+  }
+ },
+ {
+  "id": "RSL-0015",
+  "name": "Bluewater Taqueria",
+  "industry": "Restaurant",
+  "town": "Matagorda",
+  "lat": 28.65781,
+  "lon": -95.93369,
+  "employees": 7,
+  "monthlyRevenueUsd": 45500,
+  "elevationM": 1,
+  "coastDistanceKm": 0.5,
+  "wallet": "0x06c23a939b8782ECF059DCB7967F822B99419a7d",
+  "policy": {
+   "policyNumber": "RSL-P-0015",
+   "coverageUsd": 4500,
+   "payoutUnits": "450000",
+   "thresholdKt": 55,
+   "stations": [
+    "KPSX"
+   ],
+   "coverageStart": "2024-06-01T00:00:00Z",
+   "coverageEnd": "2024-11-30T23:59:59Z"
+  }
+ },
+ {
+  "id": "RSL-0016",
+  "name": "Redfish Kitchen",
+  "industry": "Restaurant",
+  "town": "Freeport",
+  "lat": 28.96474,
+  "lon": -95.34344,
+  "employees": 17,
+  "monthlyRevenueUsd": 92900,
+  "elevationM": 1,
+  "coastDistanceKm": 1.4,
+  "wallet": "0x5E10E83eA748029F188A21d6262bD202E9af2453",
+  "policy": {
+   "policyNumber": "RSL-P-0016",
+   "coverageUsd": 9500,
+   "payoutUnits": "950000",
+   "thresholdKt": 45,
+   "stations": [
+    "KLBX"
+   ],
+   "coverageStart": "2024-06-01T00:00:00Z",
+   "coverageEnd": "2024-11-30T23:59:59Z"
+  }
+ },
+ {
+  "id": "RSL-0017",
+  "name": "Brazos Taqueria",
+  "industry": "Restaurant",
+  "town": "Freeport",
+  "lat": 28.97905,
+  "lon": -95.37114,
+  "employees": 21,
+  "monthlyRevenueUsd": 95900,
+  "elevationM": 1,
+  "coastDistanceKm": 1.5,
+  "wallet": "0x25641E52dD8A55CE5bb62c69866D8D171391B982",
+  "policy": {
+   "policyNumber": "RSL-P-0017",
+   "coverageUsd": 9500,
+   "payoutUnits": "950000",
+   "thresholdKt": 45,
+   "stations": [
+    "KLBX"
+   ],
+   "coverageStart": "2024-06-01T00:00:00Z",
+   "coverageEnd": "2024-11-30T23:59:59Z"
+  }
+ },
+ {
+  "id": "RSL-0018",
+  "name": "Seawall Outfitters",
+  "industry": "Retail",
+  "town": "Freeport",
+  "lat": 28.9603,
+  "lon": -95.34584,
+  "employees": 30,
+  "monthlyRevenueUsd": 228000,
+  "elevationM": 3,
+  "coastDistanceKm": 1.6,
+  "wallet": "0x8EE2fE6692a519B8541A7b14e31882a536b01956",
+  "policy": {
+   "policyNumber": "RSL-P-0018",
+   "coverageUsd": 23000,
+   "payoutUnits": "2300000",
+   "thresholdKt": 45,
+   "stations": [
+    "KLBX"
+   ],
+   "coverageStart": "2024-06-01T00:00:00Z",
+   "coverageEnd": "2024-11-30T23:59:59Z"
+  }
+ },
+ {
+  "id": "RSL-0019",
+  "name": "Coastal Goods",
+  "industry": "Retail",
+  "town": "Freeport",
+  "lat": 28.95959,
+  "lon": -95.37452,
+  "employees": 11,
+  "monthlyRevenueUsd": 47100,
+  "elevationM": 1,
+  "coastDistanceKm": 3.3,
+  "wallet": "0xF6f2f86e2277c1DFE5af273C06318a0348B6B8E0",
+  "policy": {
+   "policyNumber": "RSL-P-0019",
+   "coverageUsd": 4500,
+   "payoutUnits": "450000",
+   "thresholdKt": 40,
+   "stations": [
+    "KLBX"
+   ],
+   "coverageStart": "2024-06-01T00:00:00Z",
+   "coverageEnd": "2024-11-30T23:59:59Z"
+  }
+ },
+ {
+  "id": "RSL-0020",
+  "name": "Cypress Contracting",
+  "industry": "Construction",
+  "town": "Freeport",
+  "lat": 28.95812,
+  "lon": -95.36918,
+  "employees": 32,
+  "monthlyRevenueUsd": 157000,
+  "elevationM": 3,
+  "coastDistanceKm": 3.9,
+  "wallet": "0x03Cd7964200bde7f1040a1b00Fa4b2d42241cc46",
+  "policy": {
+   "policyNumber": "RSL-P-0020",
+   "coverageUsd": 15500,
+   "payoutUnits": "1550000",
+   "thresholdKt": 55,
+   "stations": [
+    "KLBX"
+   ],
+   "coverageStart": "2024-06-01T00:00:00Z",
+   "coverageEnd": "2024-11-30T23:59:59Z"
+  }
+ },
+ {
+  "id": "RSL-0021",
+  "name": "Sandbar Motel",
+  "industry": "Hospitality",
+  "town": "Lake Jackson",
+  "lat": 29.04859,
+  "lon": -95.44976,
+  "employees": 27,
+  "monthlyRevenueUsd": 137800,
+  "elevationM": 4,
+  "coastDistanceKm": 12.6,
+  "wallet": "0xE4Ae2ba3Bed82Ed4EB3fb66D86cB24285B7e17da",
+  "policy": {
+   "policyNumber": "RSL-P-0021",
+   "coverageUsd": 14000,
+   "payoutUnits": "1400000",
+   "thresholdKt": 50,
+   "stations": [
+    "KLBX"
+   ],
+   "coverageStart": "2024-06-01T00:00:00Z",
+   "coverageEnd": "2024-11-30T23:59:59Z"
+  }
+ },
+ {
+  "id": "RSL-0022",
+  "name": "Magnolia Goods",
+  "industry": "Retail",
+  "town": "Lake Jackson",
+  "lat": 29.04259,
+  "lon": -95.43551,
+  "employees": 3,
+  "monthlyRevenueUsd": 19900,
+  "elevationM": 5,
+  "coastDistanceKm": 11.1,
+  "wallet": "0x49330276A885684Bb33fc0CF61c2fDC0Ad40cF7C",
+  "policy": {
+   "policyNumber": "RSL-P-0022",
+   "coverageUsd": 2500,
+   "payoutUnits": "250000",
+   "thresholdKt": 50,
+   "stations": [
+    "KLBX"
+   ],
+   "coverageStart": "2024-06-01T00:00:00Z",
+   "coverageEnd": "2024-11-30T23:59:59Z"
+  }
+ },
+ {
+  "id": "RSL-0023",
+  "name": "Laguna Market",
+  "industry": "Grocery",
+  "town": "Lake Jackson",
+  "lat": 29.04525,
+  "lon": -95.41664,
+  "employees": 27,
+  "monthlyRevenueUsd": 210800,
+  "elevationM": 6,
+  "coastDistanceKm": 13.4,
+  "wallet": "0xF81e251F602f971Dcad12a1b19306791b74d2750",
+  "policy": {
+   "policyNumber": "RSL-P-0023",
+   "coverageUsd": 21000,
+   "payoutUnits": "2100000",
+   "thresholdKt": 45,
+   "stations": [
+    "KLBX"
+   ],
+   "coverageStart": "2024-06-01T00:00:00Z",
+   "coverageEnd": "2024-11-30T23:59:59Z"
+  }
+ },
+ {
+  "id": "RSL-0024",
+  "name": "Anchor Building Supply",
+  "industry": "Hardware & Supply",
+  "town": "Lake Jackson",
+  "lat": 29.05855,
+  "lon": -95.4717,
+  "employees": 32,
+  "monthlyRevenueUsd": 188400,
+  "elevationM": 5,
+  "coastDistanceKm": 12.3,
+  "wallet": "0xe598B4E896172DCE41C22b8F8954F3FfC47B4a64",
+  "policy": {
+   "policyNumber": "RSL-P-0024",
+   "coverageUsd": 19000,
+   "payoutUnits": "1900000",
+   "thresholdKt": 40,
+   "stations": [
+    "KLBX"
+   ],
+   "coverageStart": "2024-06-01T00:00:00Z",
+   "coverageEnd": "2024-11-30T23:59:59Z"
+  }
+ },
+ {
+  "id": "RSL-0025",
+  "name": "Live Oak Building Supply",
+  "industry": "Hardware & Supply",
+  "town": "Angleton",
+  "lat": 29.16255,
+  "lon": -95.43105,
+  "employees": 14,
+  "monthlyRevenueUsd": 97300,
+  "elevationM": 8,
+  "coastDistanceKm": 23.9,
+  "wallet": "0x2BF43b0516112eC2E0856DF6ce15b43c95f78b52",
+  "policy": {
+   "policyNumber": "RSL-P-0025",
+   "coverageUsd": 9500,
+   "payoutUnits": "950000",
+   "thresholdKt": 55,
+   "stations": [
+    "KLBX"
+   ],
+   "coverageStart": "2024-06-01T00:00:00Z",
+   "coverageEnd": "2024-11-30T23:59:59Z"
+  }
+ },
+ {
+  "id": "RSL-0026",
+  "name": "Sandbar Kitchen",
+  "industry": "Restaurant",
+  "town": "Angleton",
+  "lat": 29.15412,
+  "lon": -95.45038,
+  "employees": 21,
+  "monthlyRevenueUsd": 134800,
+  "elevationM": 9,
+  "coastDistanceKm": 23.7,
+  "wallet": "0xf0745Df3bAaa89E62BB52De12E0DE2e43716448C",
+  "policy": {
+   "policyNumber": "RSL-P-0026",
+   "coverageUsd": 13500,
+   "payoutUnits": "1350000",
+   "thresholdKt": 40,
+   "stations": [
+    "KLBX"
+   ],
+   "coverageStart": "2024-06-01T00:00:00Z",
+   "coverageEnd": "2024-11-30T23:59:59Z"
+  }
+ },
+ {
+  "id": "RSL-0027",
+  "name": "Gulf Coast Garage",
+  "industry": "Auto Repair",
+  "town": "Angleton",
+  "lat": 29.20096,
+  "lon": -95.41165,
+  "employees": 18,
+  "monthlyRevenueUsd": 107300,
+  "elevationM": 10,
+  "coastDistanceKm": 26.5,
+  "wallet": "0xa3a09c917be0759C97ddf96F61E5034C7830FEcb",
+  "policy": {
+   "policyNumber": "RSL-P-0027",
+   "coverageUsd": 10500,
+   "payoutUnits": "1050000",
+   "thresholdKt": 50,
+   "stations": [
+    "KLBX",
+    "KAXH"
+   ],
+   "coverageStart": "2024-06-01T00:00:00Z",
+   "coverageEnd": "2024-11-30T23:59:59Z"
+  }
+ },
+ {
+  "id": "RSL-0028",
+  "name": "Redfish Inn",
+  "industry": "Hospitality",
+  "town": "Angleton",
+  "lat": 29.20475,
+  "lon": -95.40269,
+  "employees": 32,
+  "monthlyRevenueUsd": 192400,
+  "elevationM": 8,
+  "coastDistanceKm": 25.1,
+  "wallet": "0xFe63C3048C984f3d09cC3D4aF8C9D07db5141886",
+  "policy": {
+   "policyNumber": "RSL-P-0028",
+   "coverageUsd": 19000,
+   "payoutUnits": "1900000",
+   "thresholdKt": 55,
+   "stations": [
+    "KLBX",
+    "KAXH"
+   ],
+   "coverageStart": "2024-06-01T00:00:00Z",
+   "coverageEnd": "2024-11-30T23:59:59Z"
+  }
+ },
+ {
+  "id": "RSL-0029",
+  "name": "Driftwood Bait & Tackle",
+  "industry": "Marine Services",
+  "town": "Angleton",
+  "lat": 29.16247,
+  "lon": -95.43364,
+  "employees": 36,
+  "monthlyRevenueUsd": 188000,
+  "elevationM": 8,
+  "coastDistanceKm": 26.3,
+  "wallet": "0x2740524808D31E8EEd8Db5377194321b7Cb6ADf2",
+  "policy": {
+   "policyNumber": "RSL-P-0029",
+   "coverageUsd": 19000,
+   "payoutUnits": "1900000",
+   "thresholdKt": 40,
+   "stations": [
+    "KLBX"
+   ],
+   "coverageStart": "2024-06-01T00:00:00Z",
+   "coverageEnd": "2024-11-30T23:59:59Z"
+  }
+ },
+ {
+  "id": "RSL-0030",
+  "name": "Saltgrass Foods",
+  "industry": "Grocery",
+  "town": "Galveston",
+  "lat": 29.32844,
+  "lon": -94.76967,
+  "employees": 33,
+  "monthlyRevenueUsd": 235700,
+  "elevationM": 2,
+  "coastDistanceKm": 1.2,
+  "wallet": "0x6f83258272555265c735ee8f64330e2d7A476f5f",
+  "policy": {
+   "policyNumber": "RSL-P-0030",
+   "coverageUsd": 23500,
+   "payoutUnits": "2350000",
+   "thresholdKt": 55,
+   "stations": [
+    "KGLS"
+   ],
+   "coverageStart": "2024-06-01T00:00:00Z",
+   "coverageEnd": "2024-11-30T23:59:59Z"
+  }
+ },
+ {
+  "id": "RSL-0031",
+  "name": "Bluewater Drug Store",
+  "industry": "Pharmacy",
+  "town": "Galveston",
+  "lat": 29.26024,
+  "lon": -94.81357,
+  "employees": 4,
+  "monthlyRevenueUsd": 16400,
+  "elevationM": 1,
+  "coastDistanceKm": 0.5,
+  "wallet": "0x5Eb485b92613Fb4d3231A8baf670F98dc0AD0FFa",
+  "policy": {
+   "policyNumber": "RSL-P-0031",
+   "coverageUsd": 2500,
+   "payoutUnits": "250000",
+   "thresholdKt": 50,
+   "stations": [
+    "KGLS"
+   ],
+   "coverageStart": "2024-06-01T00:00:00Z",
+   "coverageEnd": "2024-11-30T23:59:59Z"
+  }
+ },
+ {
+  "id": "RSL-0032",
+  "name": "Anchor Goods",
+  "industry": "Retail",
+  "town": "Galveston",
+  "lat": 29.30501,
+  "lon": -94.77261,
+  "employees": 26,
+  "monthlyRevenueUsd": 171000,
+  "elevationM": 2,
+  "coastDistanceKm": 2.6,
+  "wallet": "0x00969740B824eda32a049b21B48d8E20ba2E2152",
+  "policy": {
+   "policyNumber": "RSL-P-0032",
+   "coverageUsd": 17000,
+   "payoutUnits": "1700000",
+   "thresholdKt": 55,
+   "stations": [
+    "KGLS"
+   ],
+   "coverageStart": "2024-06-01T00:00:00Z",
+   "coverageEnd": "2024-11-30T23:59:59Z"
+  }
+ },
+ {
+  "id": "RSL-0033",
+  "name": "Seawall Auto Care",
+  "industry": "Auto Repair",
+  "town": "Galveston",
+  "lat": 29.33945,
+  "lon": -94.80777,
+  "employees": 22,
+  "monthlyRevenueUsd": 94000,
+  "elevationM": 1,
+  "coastDistanceKm": 2.6,
+  "wallet": "0x00Bc8CC2C48e8b64f54f5e034EaE59e607e3f069",
+  "policy": {
+   "policyNumber": "RSL-P-0033",
+   "coverageUsd": 9500,
+   "payoutUnits": "950000",
+   "thresholdKt": 45,
+   "stations": [
+    "KGLS"
+   ],
+   "coverageStart": "2024-06-01T00:00:00Z",
+   "coverageEnd": "2024-11-30T23:59:59Z"
+  }
+ },
+ {
+  "id": "RSL-0034",
+  "name": "Brazos Seafood House",
+  "industry": "Restaurant",
+  "town": "Galveston",
+  "lat": 29.28985,
+  "lon": -94.77175,
+  "employees": 25,
+  "monthlyRevenueUsd": 181100,
+  "elevationM": 2,
+  "coastDistanceKm": 1.5,
+  "wallet": "0xBB9089Fe91572624244479c3967c85b050D94c37",
+  "policy": {
+   "policyNumber": "RSL-P-0034",
+   "coverageUsd": 18000,
+   "payoutUnits": "1800000",
+   "thresholdKt": 40,
+   "stations": [
+    "KGLS"
+   ],
+   "coverageStart": "2024-06-01T00:00:00Z",
+   "coverageEnd": "2024-11-30T23:59:59Z"
+  }
+ },
+ {
+  "id": "RSL-0035",
+  "name": "Sandbar Pharmacy",
+  "industry": "Pharmacy",
+  "town": "Galveston",
+  "lat": 29.30312,
+  "lon": -94.80289,
+  "employees": 24,
+  "monthlyRevenueUsd": 149500,
+  "elevationM": 3,
+  "coastDistanceKm": 0.8,
+  "wallet": "0xca4062D067F45150A122c09beb44C800F576aAf5",
+  "policy": {
+   "policyNumber": "RSL-P-0035",
+   "coverageUsd": 15000,
+   "payoutUnits": "1500000",
+   "thresholdKt": 45,
+   "stations": [
+    "KGLS"
+   ],
+   "coverageStart": "2024-06-01T00:00:00Z",
+   "coverageEnd": "2024-11-30T23:59:59Z"
+  }
+ },
+ {
+  "id": "RSL-0036",
+  "name": "Harbor Market",
+  "industry": "Grocery",
+  "town": "Galveston",
+  "lat": 29.27572,
+  "lon": -94.81385,
+  "employees": 35,
+  "monthlyRevenueUsd": 222100,
+  "elevationM": 4,
+  "coastDistanceKm": 1,
+  "wallet": "0x8189821B72B1c420f95688827247f109613a28CF",
+  "policy": {
+   "policyNumber": "RSL-P-0036",
+   "coverageUsd": 22000,
+   "payoutUnits": "2200000",
+   "thresholdKt": 50,
+   "stations": [
+    "KGLS"
+   ],
+   "coverageStart": "2024-06-01T00:00:00Z",
+   "coverageEnd": "2024-11-30T23:59:59Z"
+  }
+ },
+ {
+  "id": "RSL-0037",
+  "name": "Anchor Outfitters",
+  "industry": "Retail",
+  "town": "Texas City",
+  "lat": 29.361,
+  "lon": -94.91858,
+  "employees": 10,
+  "monthlyRevenueUsd": 42300,
+  "elevationM": 3,
+  "coastDistanceKm": 1.1,
+  "wallet": "0xB20D327C06DfF236FB9F5573bcb2acA5a877E148",
+  "policy": {
+   "policyNumber": "RSL-P-0037",
+   "coverageUsd": 4000,
+   "payoutUnits": "400000",
+   "thresholdKt": 45,
+   "stations": [
+    "KGLS"
+   ],
+   "coverageStart": "2024-06-01T00:00:00Z",
+   "coverageEnd": "2024-11-30T23:59:59Z"
+  }
+ },
+ {
+  "id": "RSL-0038",
+  "name": "Tidewater Bait & Tackle",
+  "industry": "Marine Services",
+  "town": "Texas City",
+  "lat": 29.35961,
+  "lon": -94.9401,
+  "employees": 9,
+  "monthlyRevenueUsd": 44300,
+  "elevationM": 5,
+  "coastDistanceKm": 1.5,
+  "wallet": "0xA905f17D8c8216Fc56Fd07Fef2D859052D244616",
+  "policy": {
+   "policyNumber": "RSL-P-0038",
+   "coverageUsd": 4500,
+   "payoutUnits": "450000",
+   "thresholdKt": 50,
+   "stations": [
+    "KGLS",
+    "KLVJ"
+   ],
+   "coverageStart": "2024-06-01T00:00:00Z",
+   "coverageEnd": "2024-11-30T23:59:59Z"
+  }
+ },
+ {
+  "id": "RSL-0039",
+  "name": "Pelican Taqueria",
+  "industry": "Restaurant",
+  "town": "Texas City",
+  "lat": 29.37674,
+  "lon": -94.85862,
+  "employees": 18,
+  "monthlyRevenueUsd": 103800,
+  "elevationM": 6,
+  "coastDistanceKm": 3.8,
+  "wallet": "0x8932354e01E69892d2A5103ECEA0e9E98aA4E229",
+  "policy": {
+   "policyNumber": "RSL-P-0039",
+   "coverageUsd": 10500,
+   "payoutUnits": "1050000",
+   "thresholdKt": 45,
+   "stations": [
+    "KGLS"
+   ],
+   "coverageStart": "2024-06-01T00:00:00Z",
+   "coverageEnd": "2024-11-30T23:59:59Z"
+  }
+ },
+ {
+  "id": "RSL-0040",
+  "name": "Saltgrass Family Clinic",
+  "industry": "Medical Clinic",
+  "town": "Texas City",
+  "lat": 29.39062,
+  "lon": -94.90004,
+  "employees": 29,
+  "monthlyRevenueUsd": 211200,
+  "elevationM": 3,
+  "coastDistanceKm": 3.2,
+  "wallet": "0xDE9ccefE0B1Fd9129a555DE2b05890d50Fa04590",
+  "policy": {
+   "policyNumber": "RSL-P-0040",
+   "coverageUsd": 21000,
+   "payoutUnits": "2100000",
+   "thresholdKt": 55,
+   "stations": [
+    "KGLS",
+    "KEFD"
+   ],
+   "coverageStart": "2024-06-01T00:00:00Z",
+   "coverageEnd": "2024-11-30T23:59:59Z"
+  }
+ },
+ {
+  "id": "RSL-0041",
+  "name": "Live Oak Outfitters",
+  "industry": "Retail",
+  "town": "League City",
+  "lat": 29.50996,
+  "lon": -95.09004,
+  "employees": 35,
+  "monthlyRevenueUsd": 250400,
+  "elevationM": 5,
+  "coastDistanceKm": 13.4,
+  "wallet": "0xa188C6A04EFDF2A94382e6E4E72D50cF0260A438",
+  "policy": {
+   "policyNumber": "RSL-P-0041",
+   "coverageUsd": 25000,
+   "payoutUnits": "2500000",
+   "thresholdKt": 45,
+   "stations": [
+    "KEFD",
+    "KLVJ"
+   ],
+   "coverageStart": "2024-06-01T00:00:00Z",
+   "coverageEnd": "2024-11-30T23:59:59Z"
+  }
+ },
+ {
+  "id": "RSL-0042",
+  "name": "Sandbar Tire & Lube",
+  "industry": "Auto Repair",
+  "town": "League City",
+  "lat": 29.50154,
+  "lon": -95.10188,
+  "employees": 10,
+  "monthlyRevenueUsd": 78000,
+  "elevationM": 7,
+  "coastDistanceKm": 10.5,
+  "wallet": "0xF69a49Cd05F092231a601503DAAd5F60B7410857",
+  "policy": {
+   "policyNumber": "RSL-P-0042",
+   "coverageUsd": 8000,
+   "payoutUnits": "800000",
+   "thresholdKt": 45,
+   "stations": [
+    "KEFD",
+    "KLVJ"
+   ],
+   "coverageStart": "2024-06-01T00:00:00Z",
+   "coverageEnd": "2024-11-30T23:59:59Z"
+  }
+ },
+ {
+  "id": "RSL-0043",
+  "name": "Pelican Boutique",
+  "industry": "Retail",
+  "town": "League City",
+  "lat": 29.5163,
+  "lon": -95.07544,
+  "employees": 36,
+  "monthlyRevenueUsd": 209000,
+  "elevationM": 5,
+  "coastDistanceKm": 12.7,
+  "wallet": "0xddbB5ac63A1721bf12211B30d3316b0F940109A8",
+  "policy": {
+   "policyNumber": "RSL-P-0043",
+   "coverageUsd": 21000,
+   "payoutUnits": "2100000",
+   "thresholdKt": 45,
+   "stations": [
+    "KEFD",
+    "KLVJ"
+   ],
+   "coverageStart": "2024-06-01T00:00:00Z",
+   "coverageEnd": "2024-11-30T23:59:59Z"
+  }
+ },
+ {
+  "id": "RSL-0044",
+  "name": "Anchor Haulers",
+  "industry": "Logistics",
+  "town": "League City",
+  "lat": 29.4827,
+  "lon": -95.0709,
+  "employees": 5,
+  "monthlyRevenueUsd": 20900,
+  "elevationM": 6,
+  "coastDistanceKm": 10.5,
+  "wallet": "0xD24867Ba327D87ae66041946Ec6bf3836613db11",
+  "policy": {
+   "policyNumber": "RSL-P-0044",
+   "coverageUsd": 2500,
+   "payoutUnits": "250000",
+   "thresholdKt": 55,
+   "stations": [
+    "KEFD",
+    "KLVJ"
+   ],
+   "coverageStart": "2024-06-01T00:00:00Z",
+   "coverageEnd": "2024-11-30T23:59:59Z"
+  }
+ },
+ {
+  "id": "RSL-0045",
+  "name": "Coastal Inn",
+  "industry": "Hospitality",
+  "town": "Pasadena",
+  "lat": 29.70313,
+  "lon": -95.17005,
+  "employees": 40,
+  "monthlyRevenueUsd": 266500,
+  "elevationM": 10,
+  "coastDistanceKm": 18.3,
+  "wallet": "0x5782A6Aa05A99CFD69b4769d783f4141F063E34d",
+  "policy": {
+   "policyNumber": "RSL-P-0045",
+   "coverageUsd": 25000,
+   "payoutUnits": "2500000",
+   "thresholdKt": 55,
+   "stations": [
+    "KEFD",
+    "T41"
+   ],
+   "coverageStart": "2024-06-01T00:00:00Z",
+   "coverageEnd": "2024-11-30T23:59:59Z"
+  }
+ },
+ {
+  "id": "RSL-0046",
+  "name": "Live Oak Kids Academy",
+  "industry": "Childcare",
+  "town": "Pasadena",
+  "lat": 29.69946,
+  "lon": -95.21862,
+  "employees": 26,
+  "monthlyRevenueUsd": 178700,
+  "elevationM": 8,
+  "coastDistanceKm": 18.3,
+  "wallet": "0xc7E564e97e9aB24B7A50d824Bc71E43a6a7AFb75",
+  "policy": {
+   "policyNumber": "RSL-P-0046",
+   "coverageUsd": 18000,
+   "payoutUnits": "1800000",
+   "thresholdKt": 55,
+   "stations": [
+    "KHOU",
+    "KEFD"
+   ],
+   "coverageStart": "2024-06-01T00:00:00Z",
+   "coverageEnd": "2024-11-30T23:59:59Z"
+  }
+ },
+ {
+  "id": "RSL-0047",
+  "name": "Sandbar Auto Care",
+  "industry": "Auto Repair",
+  "town": "Pasadena",
+  "lat": 29.6858,
+  "lon": -95.20697,
+  "employees": 8,
+  "monthlyRevenueUsd": 52900,
+  "elevationM": 11,
+  "coastDistanceKm": 21.4,
+  "wallet": "0x6795Fc0f01092bC44EFf076Caf68dDdF8A3BA2D5",
+  "policy": {
+   "policyNumber": "RSL-P-0047",
+   "coverageUsd": 5500,
+   "payoutUnits": "550000",
+   "thresholdKt": 50,
+   "stations": [
+    "KHOU",
+    "KEFD"
+   ],
+   "coverageStart": "2024-06-01T00:00:00Z",
+   "coverageEnd": "2024-11-30T23:59:59Z"
+  }
+ },
+ {
+  "id": "RSL-0048",
+  "name": "Pelican Auto Care",
+  "industry": "Auto Repair",
+  "town": "Pasadena",
+  "lat": 29.68196,
+  "lon": -95.20174,
+  "employees": 20,
+  "monthlyRevenueUsd": 86100,
+  "elevationM": 10,
+  "coastDistanceKm": 21,
+  "wallet": "0x9cfb53569b5Bbd89997F0F6698F21fa08B249a44",
+  "policy": {
+   "policyNumber": "RSL-P-0048",
+   "coverageUsd": 8500,
+   "payoutUnits": "850000",
+   "thresholdKt": 55,
+   "stations": [
+    "KHOU",
+    "KEFD"
+   ],
+   "coverageStart": "2024-06-01T00:00:00Z",
+   "coverageEnd": "2024-11-30T23:59:59Z"
+  }
+ },
+ {
+  "id": "RSL-0049",
+  "name": "Magnolia Roofing",
+  "industry": "Construction",
+  "town": "Pasadena",
+  "lat": 29.68862,
+  "lon": -95.17243,
+  "employees": 33,
+  "monthlyRevenueUsd": 136200,
+  "elevationM": 10,
+  "coastDistanceKm": 20.9,
+  "wallet": "0x85A93f004339CFef3163338CA1Ad5375B29Ea4A3",
+  "policy": {
+   "policyNumber": "RSL-P-0049",
+   "coverageUsd": 13500,
+   "payoutUnits": "1350000",
+   "thresholdKt": 45,
+   "stations": [
+    "KEFD",
+    "T41"
+   ],
+   "coverageStart": "2024-06-01T00:00:00Z",
+   "coverageEnd": "2024-11-30T23:59:59Z"
+  }
+ },
+ {
+  "id": "RSL-0050",
+  "name": "Bluewater Marine",
+  "industry": "Marine Services",
+  "town": "Houston (Hobby)",
+  "lat": 29.69084,
+  "lon": -95.28549,
+  "employees": 36,
+  "monthlyRevenueUsd": 203100,
+  "elevationM": 12,
+  "coastDistanceKm": 36.9,
+  "wallet": "0x1dc72E3b9909258007904B7778C0688EB9815A31",
+  "policy": {
+   "policyNumber": "RSL-P-0050",
+   "coverageUsd": 20500,
+   "payoutUnits": "2050000",
+   "thresholdKt": 50,
+   "stations": [
+    "KHOU",
+    "KEFD"
+   ],
+   "coverageStart": "2024-06-01T00:00:00Z",
+   "coverageEnd": "2024-11-30T23:59:59Z"
+  }
+ },
+ {
+  "id": "RSL-0051",
+  "name": "Pelican Bait & Tackle",
+  "industry": "Marine Services",
+  "town": "Houston (Hobby)",
+  "lat": 29.64096,
+  "lon": -95.30827,
+  "employees": 24,
+  "monthlyRevenueUsd": 112700,
+  "elevationM": 13,
+  "coastDistanceKm": 34.5,
+  "wallet": "0xF9d81d8D9ee05d0ef96775B65AF37BE7930FB63f",
+  "policy": {
+   "policyNumber": "RSL-P-0051",
+   "coverageUsd": 11500,
+   "payoutUnits": "1150000",
+   "thresholdKt": 50,
+   "stations": [
+    "KHOU",
+    "KEFD"
+   ],
+   "coverageStart": "2024-06-01T00:00:00Z",
+   "coverageEnd": "2024-11-30T23:59:59Z"
+  }
+ },
+ {
+  "id": "RSL-0052",
+  "name": "Redfish Contracting",
+  "industry": "Construction",
+  "town": "Houston (Hobby)",
+  "lat": 29.6786,
+  "lon": -95.26857,
+  "employees": 39,
+  "monthlyRevenueUsd": 160300,
+  "elevationM": 11,
+  "coastDistanceKm": 36.2,
+  "wallet": "0x338514765787B4e8b0B8977608f4444746EC099F",
+  "policy": {
+   "policyNumber": "RSL-P-0052",
+   "coverageUsd": 16000,
+   "payoutUnits": "1600000",
+   "thresholdKt": 40,
+   "stations": [
+    "KHOU",
+    "KEFD"
+   ],
+   "coverageStart": "2024-06-01T00:00:00Z",
+   "coverageEnd": "2024-11-30T23:59:59Z"
+  }
+ },
+ {
+  "id": "RSL-0053",
+  "name": "Prairie Kitchen",
+  "industry": "Restaurant",
+  "town": "Houston (Hobby)",
+  "lat": 29.62929,
+  "lon": -95.30195,
+  "employees": 38,
+  "monthlyRevenueUsd": 275900,
+  "elevationM": 13,
+  "coastDistanceKm": 36.1,
+  "wallet": "0x73936F189CB8806d9812C4b79E82A009041FAC35",
+  "policy": {
+   "policyNumber": "RSL-P-0053",
+   "coverageUsd": 25000,
+   "payoutUnits": "2500000",
+   "thresholdKt": 40,
+   "stations": [
+    "KHOU",
+    "KLVJ"
+   ],
+   "coverageStart": "2024-06-01T00:00:00Z",
+   "coverageEnd": "2024-11-30T23:59:59Z"
+  }
+ },
+ {
+  "id": "RSL-0054",
+  "name": "Sandbar Family Clinic",
+  "industry": "Medical Clinic",
+  "town": "Houston (Hobby)",
+  "lat": 29.66684,
+  "lon": -95.23873,
+  "employees": 14,
+  "monthlyRevenueUsd": 83400,
+  "elevationM": 12,
+  "coastDistanceKm": 35.9,
+  "wallet": "0xAf49Be43a15fA8D50F854bcCEB37B5E5652dAC25",
+  "policy": {
+   "policyNumber": "RSL-P-0054",
+   "coverageUsd": 8500,
+   "payoutUnits": "850000",
+   "thresholdKt": 40,
+   "stations": [
+    "KHOU",
+    "KEFD"
+   ],
+   "coverageStart": "2024-06-01T00:00:00Z",
+   "coverageEnd": "2024-11-30T23:59:59Z"
+  }
+ },
+ {
+  "id": "RSL-0055",
+  "name": "Live Oak Suites",
+  "industry": "Hospitality",
+  "town": "Houston (Downtown)",
+  "lat": 29.79061,
+  "lon": -95.40636,
+  "employees": 8,
+  "monthlyRevenueUsd": 40700,
+  "elevationM": 13,
+  "coastDistanceKm": 48.6,
+  "wallet": "0x83f8f93aabfFc3F0A5FBaf6D3A2f683E7AC5400A",
+  "policy": {
+   "policyNumber": "RSL-P-0055",
+   "coverageUsd": 4000,
+   "payoutUnits": "400000",
+   "thresholdKt": 55,
+   "stations": [
+    "KHOU",
+    "KIAH"
+   ],
+   "coverageStart": "2024-06-01T00:00:00Z",
+   "coverageEnd": "2024-11-30T23:59:59Z"
+  }
+ },
+ {
+  "id": "RSL-0056",
+  "name": "Cypress Auto Care",
+  "industry": "Auto Repair",
+  "town": "Houston (Downtown)",
+  "lat": 29.75523,
+  "lon": -95.36723,
+  "employees": 29,
+  "monthlyRevenueUsd": 218900,
+  "elevationM": 17,
+  "coastDistanceKm": 50.1,
+  "wallet": "0x810Ea5E72522229148993A73F1E322376dC38b11",
+  "policy": {
+   "policyNumber": "RSL-P-0056",
+   "coverageUsd": 22000,
+   "payoutUnits": "2200000",
+   "thresholdKt": 50,
+   "stations": [
+    "KHOU",
+    "KIAH"
+   ],
+   "coverageStart": "2024-06-01T00:00:00Z",
+   "coverageEnd": "2024-11-30T23:59:59Z"
+  }
+ },
+ {
+  "id": "RSL-0057",
+  "name": "Starboard Drug Store",
+  "industry": "Pharmacy",
+  "town": "Houston (Downtown)",
+  "lat": 29.77885,
+  "lon": -95.35834,
+  "employees": 23,
+  "monthlyRevenueUsd": 136000,
+  "elevationM": 15,
+  "coastDistanceKm": 49.7,
+  "wallet": "0xB0EbDC8c34A4D5CA64Aa5a2c329b6802D103fE0E",
+  "policy": {
+   "policyNumber": "RSL-P-0057",
+   "coverageUsd": 13500,
+   "payoutUnits": "1350000",
+   "thresholdKt": 40,
+   "stations": [
+    "KHOU",
+    "KIAH"
+   ],
+   "coverageStart": "2024-06-01T00:00:00Z",
+   "coverageEnd": "2024-11-30T23:59:59Z"
+  }
+ },
+ {
+  "id": "RSL-0058",
+  "name": "Tidewater Learning Center",
+  "industry": "Childcare",
+  "town": "Houston (Downtown)",
+  "lat": 29.73342,
+  "lon": -95.39627,
+  "employees": 27,
+  "monthlyRevenueUsd": 170300,
+  "elevationM": 16,
+  "coastDistanceKm": 50.7,
+  "wallet": "0xd8AA0E9e9D6ae9B996E920ff62D792f9E4949794",
+  "policy": {
+   "policyNumber": "RSL-P-0058",
+   "coverageUsd": 17000,
+   "payoutUnits": "1700000",
+   "thresholdKt": 55,
+   "stations": [
+    "KHOU",
+    "KAXH"
+   ],
+   "coverageStart": "2024-06-01T00:00:00Z",
+   "coverageEnd": "2024-11-30T23:59:59Z"
+  }
+ },
+ {
+  "id": "RSL-0059",
+  "name": "Saltgrass Kitchen",
+  "industry": "Restaurant",
+  "town": "Houston (Downtown)",
+  "lat": 29.74395,
+  "lon": -95.35859,
+  "employees": 33,
+  "monthlyRevenueUsd": 199200,
+  "elevationM": 17,
+  "coastDistanceKm": 48.8,
+  "wallet": "0xE3529B9fc2d10e39deB601f97dFa1e1D48a31ac3",
+  "policy": {
+   "policyNumber": "RSL-P-0059",
+   "coverageUsd": 20000,
+   "payoutUnits": "2000000",
+   "thresholdKt": 45,
+   "stations": [
+    "KHOU",
+    "KEFD"
+   ],
+   "coverageStart": "2024-06-01T00:00:00Z",
+   "coverageEnd": "2024-11-30T23:59:59Z"
+  }
+ },
+ {
+  "id": "RSL-0060",
+  "name": "Lone Star Bait & Tackle",
+  "industry": "Marine Services",
+  "town": "Houston (Downtown)",
+  "lat": 29.75888,
+  "lon": -95.35967,
+  "employees": 37,
+  "monthlyRevenueUsd": 206300,
+  "elevationM": 14,
+  "coastDistanceKm": 51,
+  "wallet": "0xb03E3ACb2101c1453E15204C7730435AeE603847",
+  "policy": {
+   "policyNumber": "RSL-P-0060",
+   "coverageUsd": 20500,
+   "payoutUnits": "2050000",
+   "thresholdKt": 45,
+   "stations": [
+    "KHOU",
+    "KIAH"
+   ],
+   "coverageStart": "2024-06-01T00:00:00Z",
+   "coverageEnd": "2024-11-30T23:59:59Z"
+  }
+ },
+ {
+  "id": "RSL-0061",
+  "name": "Sandbar Drug Store",
+  "industry": "Pharmacy",
+  "town": "Sugar Land",
+  "lat": 29.60145,
+  "lon": -95.66941,
+  "employees": 29,
+  "monthlyRevenueUsd": 181800,
+  "elevationM": 25,
+  "coastDistanceKm": 61.1,
+  "wallet": "0x3208DE53F8F8367c0feB335b205EA27810A027CC",
+  "policy": {
+   "policyNumber": "RSL-P-0061",
+   "coverageUsd": 18000,
+   "payoutUnits": "1800000",
+   "thresholdKt": 50,
+   "stations": [
+    "KSGR",
+    "KAXH"
+   ],
+   "coverageStart": "2024-06-01T00:00:00Z",
+   "coverageEnd": "2024-11-30T23:59:59Z"
+  }
+ },
+ {
+  "id": "RSL-0062",
+  "name": "Redfish Boutique",
+  "industry": "Retail",
+  "town": "Sugar Land",
+  "lat": 29.63774,
+  "lon": -95.64089,
+  "employees": 31,
+  "monthlyRevenueUsd": 194700,
+  "elevationM": 24,
+  "coastDistanceKm": 59.5,
+  "wallet": "0xC407E6b6261Ab61e465C3DA7995B1837Cf176FE4",
+  "policy": {
+   "policyNumber": "RSL-P-0062",
+   "coverageUsd": 19500,
+   "payoutUnits": "1950000",
+   "thresholdKt": 45,
+   "stations": [
+    "KSGR",
+    "KAXH"
+   ],
+   "coverageStart": "2024-06-01T00:00:00Z",
+   "coverageEnd": "2024-11-30T23:59:59Z"
+  }
+ },
+ {
+  "id": "RSL-0063",
+  "name": "Saltgrass Auto Care",
+  "industry": "Auto Repair",
+  "town": "Sugar Land",
+  "lat": 29.60744,
+  "lon": -95.65942,
+  "employees": 16,
+  "monthlyRevenueUsd": 127900,
+  "elevationM": 23,
+  "coastDistanceKm": 60.9,
+  "wallet": "0x1d61Eb68f54e5548b54812a977233877c0527d26",
+  "policy": {
+   "policyNumber": "RSL-P-0063",
+   "coverageUsd": 13000,
+   "payoutUnits": "1300000",
+   "thresholdKt": 55,
+   "stations": [
+    "KSGR",
+    "KAXH"
+   ],
+   "coverageStart": "2024-06-01T00:00:00Z",
+   "coverageEnd": "2024-11-30T23:59:59Z"
+  }
+ },
+ {
+  "id": "RSL-0064",
+  "name": "Magnolia Pharmacy",
+  "industry": "Pharmacy",
+  "town": "Sugar Land",
+  "lat": 29.64869,
+  "lon": -95.60935,
+  "employees": 9,
+  "monthlyRevenueUsd": 71600,
+  "elevationM": 25,
+  "coastDistanceKm": 58.9,
+  "wallet": "0x5331b107f76582B818A6B65f67c77610FC995184",
+  "policy": {
+   "policyNumber": "RSL-P-0064",
+   "coverageUsd": 7000,
+   "payoutUnits": "700000",
+   "thresholdKt": 45,
+   "stations": [
+    "KSGR",
+    "KAXH"
+   ],
+   "coverageStart": "2024-06-01T00:00:00Z",
+   "coverageEnd": "2024-11-30T23:59:59Z"
+  }
+ },
+ {
+  "id": "RSL-0065",
+  "name": "Saltgrass Grill",
+  "industry": "Restaurant",
+  "town": "Humble",
+  "lat": 30.0099,
+  "lon": -95.24456,
+  "employees": 30,
+  "monthlyRevenueUsd": 154100,
+  "elevationM": 31,
+  "coastDistanceKm": 74.6,
+  "wallet": "0xbE054d751AFED786514556507391f0A7436e14f0",
+  "policy": {
+   "policyNumber": "RSL-P-0065",
+   "coverageUsd": 15500,
+   "payoutUnits": "1550000",
+   "thresholdKt": 50,
+   "stations": [
+    "KIAH",
+    "KDWH"
+   ],
+   "coverageStart": "2024-06-01T00:00:00Z",
+   "coverageEnd": "2024-11-30T23:59:59Z"
+  }
+ },
+ {
+  "id": "RSL-0066",
+  "name": "Bayou Urgent Care",
+  "industry": "Medical Clinic",
+  "town": "Humble",
+  "lat": 29.99574,
+  "lon": -95.2709,
+  "employees": 9,
+  "monthlyRevenueUsd": 56100,
+  "elevationM": 30,
+  "coastDistanceKm": 74.9,
+  "wallet": "0xF96ef64C399cb48223C5b4D331fe98d70A3c4477",
+  "policy": {
+   "policyNumber": "RSL-P-0066",
+   "coverageUsd": 5500,
+   "payoutUnits": "550000",
+   "thresholdKt": 50,
+   "stations": [
+    "KIAH",
+    "KDWH"
+   ],
+   "coverageStart": "2024-06-01T00:00:00Z",
+   "coverageEnd": "2024-11-30T23:59:59Z"
+  }
+ },
+ {
+  "id": "RSL-0067",
+  "name": "Driftwood Kids Academy",
+  "industry": "Childcare",
+  "town": "Humble",
+  "lat": 29.99275,
+  "lon": -95.28017,
+  "employees": 21,
+  "monthlyRevenueUsd": 87000,
+  "elevationM": 29,
+  "coastDistanceKm": 74.3,
+  "wallet": "0x21d8C852C4B8D2858b64C67Ed2039b9f1b584995",
+  "policy": {
+   "policyNumber": "RSL-P-0067",
+   "coverageUsd": 8500,
+   "payoutUnits": "850000",
+   "thresholdKt": 50,
+   "stations": [
+    "KIAH",
+    "KDWH"
+   ],
+   "coverageStart": "2024-06-01T00:00:00Z",
+   "coverageEnd": "2024-11-30T23:59:59Z"
+  }
+ },
+ {
+  "id": "RSL-0068",
+  "name": "Harbor Motel",
+  "industry": "Hospitality",
+  "town": "Humble",
+  "lat": 29.98418,
+  "lon": -95.27067,
+  "employees": 24,
+  "monthlyRevenueUsd": 156600,
+  "elevationM": 29,
+  "coastDistanceKm": 75.1,
+  "wallet": "0x257CbebB65b4eB1a3178f775e9b61ef08F8DA7FA",
+  "policy": {
+   "policyNumber": "RSL-P-0068",
+   "coverageUsd": 15500,
+   "payoutUnits": "1550000",
+   "thresholdKt": 45,
+   "stations": [
+    "KIAH",
+    "KDWH"
+   ],
+   "coverageStart": "2024-06-01T00:00:00Z",
+   "coverageEnd": "2024-11-30T23:59:59Z"
+  }
+ },
+ {
+  "id": "RSL-0069",
+  "name": "Live Oak Grill",
+  "industry": "Restaurant",
+  "town": "Pearland",
+  "lat": 29.56196,
+  "lon": -95.27963,
+  "employees": 37,
+  "monthlyRevenueUsd": 274600,
+  "elevationM": 14,
+  "coastDistanceKm": 29.8,
+  "wallet": "0xC8825cABA920a2040c3E8326167Ab6e627b0F533",
+  "policy": {
+   "policyNumber": "RSL-P-0069",
+   "coverageUsd": 25000,
+   "payoutUnits": "2500000",
+   "thresholdKt": 45,
+   "stations": [
+    "KLVJ",
+    "KHOU"
+   ],
+   "coverageStart": "2024-06-01T00:00:00Z",
+   "coverageEnd": "2024-11-30T23:59:59Z"
+  }
+ },
+ {
+  "id": "RSL-0070",
+  "name": "Pelican Contracting",
+  "industry": "Construction",
+  "town": "Pearland",
+  "lat": 29.57449,
+  "lon": -95.30711,
+  "employees": 5,
+  "monthlyRevenueUsd": 31300,
+  "elevationM": 17,
+  "coastDistanceKm": 30.5,
+  "wallet": "0x8939E00e4dDC57Bb382B167Ed0E03E9e2364dDb1",
+  "policy": {
+   "policyNumber": "RSL-P-0070",
+   "coverageUsd": 3000,
+   "payoutUnits": "300000",
+   "thresholdKt": 50,
+   "stations": [
+    "KHOU",
+    "KLVJ"
+   ],
+   "coverageStart": "2024-06-01T00:00:00Z",
+   "coverageEnd": "2024-11-30T23:59:59Z"
+  }
+ },
+ {
+  "id": "RSL-0071",
+  "name": "Anchor Supply Co.",
+  "industry": "Hardware & Supply",
+  "town": "Pearland",
+  "lat": 29.53876,
+  "lon": -95.25433,
+  "employees": 22,
+  "monthlyRevenueUsd": 145600,
+  "elevationM": 15,
+  "coastDistanceKm": 30,
+  "wallet": "0x5577f2cCfCFb482a5F1118193c5Cfa702e18D7b2",
+  "policy": {
+   "policyNumber": "RSL-P-0071",
+   "coverageUsd": 14500,
+   "payoutUnits": "1450000",
+   "thresholdKt": 50,
+   "stations": [
+    "KLVJ",
+    "KHOU"
+   ],
+   "coverageStart": "2024-06-01T00:00:00Z",
+   "coverageEnd": "2024-11-30T23:59:59Z"
+  }
+ },
+ {
+  "id": "RSL-0072",
+  "name": "Heron Contracting",
+  "industry": "Construction",
+  "town": "Pearland",
+  "lat": 29.53619,
+  "lon": -95.28577,
+  "employees": 35,
+  "monthlyRevenueUsd": 149700,
+  "elevationM": 15,
+  "coastDistanceKm": 29.4,
+  "wallet": "0xE9eb8307b0e54E09961349D30881B6B3b013EF1A",
+  "policy": {
+   "policyNumber": "RSL-P-0072",
+   "coverageUsd": 15000,
+   "payoutUnits": "1500000",
+   "thresholdKt": 55,
+   "stations": [
+    "KLVJ",
+    "KHOU"
+   ],
+   "coverageStart": "2024-06-01T00:00:00Z",
+   "coverageEnd": "2024-11-30T23:59:59Z"
+  }
+ },
+ {
+  "id": "RSL-0073",
+  "name": "Driftwood Pharmacy",
+  "industry": "Pharmacy",
+  "town": "El Campo",
+  "lat": 29.19185,
+  "lon": -96.31473,
+  "employees": 20,
+  "monthlyRevenueUsd": 150800,
+  "elevationM": 34,
+  "coastDistanceKm": 56.7,
+  "wallet": "0xb168ee22D61a7122E7056EC0dF6fDC7a1950FdB3",
+  "policy": {
+   "policyNumber": "RSL-P-0073",
+   "coverageUsd": 15000,
+   "payoutUnits": "1500000",
+   "thresholdKt": 50,
+   "stations": [
+    "KARM"
+   ],
+   "coverageStart": "2024-06-01T00:00:00Z",
+   "coverageEnd": "2024-11-30T23:59:59Z"
+  }
+ },
+ {
+  "id": "RSL-0074",
+  "name": "Shoreline Bait & Tackle",
+  "industry": "Marine Services",
+  "town": "El Campo",
+  "lat": 29.20705,
+  "lon": -96.2803,
+  "employees": 27,
+  "monthlyRevenueUsd": 129700,
+  "elevationM": 33,
+  "coastDistanceKm": 53.5,
+  "wallet": "0x454a796e453f1ac6CCdc7dF77e9f9d1590B1B419",
+  "policy": {
+   "policyNumber": "RSL-P-0074",
+   "coverageUsd": 13000,
+   "payoutUnits": "1300000",
+   "thresholdKt": 50,
+   "stations": [
+    "KARM"
+   ],
+   "coverageStart": "2024-06-01T00:00:00Z",
+   "coverageEnd": "2024-11-30T23:59:59Z"
+  }
+ },
+ {
+  "id": "RSL-0075",
+  "name": "Brazos Bait & Tackle",
+  "industry": "Marine Services",
+  "town": "El Campo",
+  "lat": 29.22468,
+  "lon": -96.2512,
+  "employees": 20,
+  "monthlyRevenueUsd": 85700,
+  "elevationM": 33,
+  "coastDistanceKm": 53.1,
+  "wallet": "0xc56475adE97430f8B9c19BD964a89F9d11BeE613",
+  "policy": {
+   "policyNumber": "RSL-P-0075",
+   "coverageUsd": 8500,
+   "payoutUnits": "850000",
+   "thresholdKt": 50,
+   "stations": [
+    "KARM"
+   ],
+   "coverageStart": "2024-06-01T00:00:00Z",
+   "coverageEnd": "2024-11-30T23:59:59Z"
+  }
+ },
+ {
+  "id": "RSL-0076",
+  "name": "Gulf Coast Motel",
+  "industry": "Hospitality",
+  "town": "Port Lavaca",
+  "lat": 28.59461,
+  "lon": -96.59982,
+  "employees": 38,
+  "monthlyRevenueUsd": 267000,
+  "elevationM": 5,
+  "coastDistanceKm": 0.5,
+  "wallet": "0x137099Ceb5efd4D9aA5Fbd79865F15C99dB9f26C",
+  "policy": {
+   "policyNumber": "RSL-P-0076",
+   "coverageUsd": 25000,
+   "payoutUnits": "2500000",
+   "thresholdKt": 45,
+   "stations": [
+    "KPSX"
+   ],
+   "coverageStart": "2024-06-01T00:00:00Z",
+   "coverageEnd": "2024-11-30T23:59:59Z"
+  }
+ },
+ {
+  "id": "RSL-0077",
+  "name": "Brazos Building Supply",
+  "industry": "Hardware & Supply",
+  "town": "Port Lavaca",
+  "lat": 28.61955,
+  "lon": -96.62087,
+  "employees": 38,
+  "monthlyRevenueUsd": 287300,
+  "elevationM": 6,
+  "coastDistanceKm": 1.8,
+  "wallet": "0xDd696159cfe5AE5736f3Add94334005c1cb1b569",
+  "policy": {
+   "policyNumber": "RSL-P-0077",
+   "coverageUsd": 25000,
+   "payoutUnits": "2500000",
+   "thresholdKt": 55,
+   "stations": [
+    "KPSX"
+   ],
+   "coverageStart": "2024-06-01T00:00:00Z",
+   "coverageEnd": "2024-11-30T23:59:59Z"
+  }
+ },
+ {
+  "id": "RSL-0078",
+  "name": "Tidewater Seafood House",
+  "industry": "Restaurant",
+  "town": "Port Lavaca",
+  "lat": 28.61998,
+  "lon": -96.60378,
+  "employees": 34,
+  "monthlyRevenueUsd": 201100,
+  "elevationM": 8,
+  "coastDistanceKm": 0.7,
+  "wallet": "0xa2F4DfBE7D2719386EE355EF7E115929f595a683",
+  "policy": {
+   "policyNumber": "RSL-P-0078",
+   "coverageUsd": 20000,
+   "payoutUnits": "2000000",
+   "thresholdKt": 55,
+   "stations": [
+    "KPSX"
+   ],
+   "coverageStart": "2024-06-01T00:00:00Z",
+   "coverageEnd": "2024-11-30T23:59:59Z"
+  }
+ },
+ {
+  "id": "RSL-0079",
+  "name": "Magnolia Garage",
+  "industry": "Auto Repair",
+  "town": "Conroe",
+  "lat": 30.34373,
+  "lon": -95.46271,
+  "employees": 9,
+  "monthlyRevenueUsd": 40300,
+  "elevationM": 64,
+  "coastDistanceKm": 118.4,
+  "wallet": "0x32Ac4Ca620AfF46Ac2261bc95E3dA3C011A9eA8C",
+  "policy": {
+   "policyNumber": "RSL-P-0079",
+   "coverageUsd": 4000,
+   "payoutUnits": "400000",
+   "thresholdKt": 45,
+   "stations": [
+    "KCXO",
+    "KDWH"
+   ],
+   "coverageStart": "2024-06-01T00:00:00Z",
+   "coverageEnd": "2024-11-30T23:59:59Z"
+  }
+ },
+ {
+  "id": "RSL-0080",
+  "name": "Coastal Foods",
+  "industry": "Grocery",
+  "town": "Conroe",
+  "lat": 30.34249,
+  "lon": -95.43642,
+  "employees": 29,
+  "monthlyRevenueUsd": 202800,
+  "elevationM": 64,
+  "coastDistanceKm": 119.3,
+  "wallet": "0xBddc094110c052621970C7666ca88077372Eb540",
+  "policy": {
+   "policyNumber": "RSL-P-0080",
+   "coverageUsd": 20500,
+   "payoutUnits": "2050000",
+   "thresholdKt": 45,
+   "stations": [
+    "KCXO",
+    "KDWH"
+   ],
+   "coverageStart": "2024-06-01T00:00:00Z",
+   "coverageEnd": "2024-11-30T23:59:59Z"
+  }
+ }
+]

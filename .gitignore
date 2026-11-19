@@ -1,0 +1,21 @@
+# secrets
+.env
+.env.*
+!.env.example
+*.key
+wallets.json
+# node
+node_modules/
+.next/
+out/
+*.tsbuildinfo
+next-env.d.ts
+# foundry
+contracts/out/
+contracts/cache/
+contracts/broadcast/*/31337/
+# misc
+.DS_Store
+data-raw/hurdat2.txt
+.vercel
+contracts/lib/

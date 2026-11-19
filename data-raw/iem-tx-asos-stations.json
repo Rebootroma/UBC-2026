@@ -1,0 +1,122 @@
+{
+ "6R3": {
+  "name": "Cleveland",
+  "lon": -95.008,
+  "lat": 30.3564,
+  "elevation": 45.7
+ },
+ "ARM": {
+  "name": "WHARTON REGIONAL ARPT",
+  "lon": -96.1544,
+  "lat": 29.2543,
+  "elevation": 30.0
+ },
+ "AXH": {
+  "name": "Houston SW",
+  "lon": -95.4769,
+  "lat": 29.5061,
+  "elevation": 20.7
+ },
+ "BPT": {
+  "name": "Beaumont - Port Arthur",
+  "lon": -94.0261,
+  "lat": 29.9521,
+  "elevation": 4.5784636
+ },
+ "BYY": {
+  "name": "Bay City Regional",
+  "lon": -95.8634,
+  "lat": 28.9732,
+  "elevation": 13.0
+ },
+ "CXO": {
+  "name": "CONROE/MONTGOMERY COUNTY AIRPORT",
+  "lon": -95.4145,
+  "lat": 30.3524,
+  "elevation": 75.0
+ },
+ "DWH": {
+  "name": "HOUSTON/D.W. HOOKS",
+  "lon": -95.5562,
+  "lat": 30.068,
+  "elevation": 46.0
+ },
+ "EFD": {
+  "name": "HOUSTON/ELLINGTON",
+  "lon": -95.1588,
+  "lat": 29.6073,
+  "elevation": 10.0
+ },
+ "GLS": {
+  "name": "GALVESTON/SCHOLES",
+  "lon": -94.8604,
+  "lat": 29.2653,
+  "elevation": 16.0
+ },
+ "GVW": {
+  "name": "Galveston 209B",
+  "lon": -94.5466,
+  "lat": 29.1302,
+  "elevation": 0.0
+ },
+ "HOU": {
+  "name": "HOUSTON/WILL HOBBY",
+  "lon": -95.2824,
+  "lat": 29.6375,
+  "elevation": 14.0
+ },
+ "IAH": {
+  "name": "Houston Intercontinental",
+  "lon": -95.3607,
+  "lat": 29.9844,
+  "elevation": 28.0
+ },
+ "LBX": {
+  "name": "ANGLETON/LAKE JACKS",
+  "lon": -95.4621,
+  "lat": 29.1086,
+  "elevation": 8.0
+ },
+ "LVJ": {
+  "name": "Pearland Regional",
+  "lon": -95.2417,
+  "lat": 29.5189,
+  "elevation": 13.164371
+ },
+ "PSX": {
+  "name": "PALACIOS MUNICIPAL",
+  "lon": -96.25,
+  "lat": 28.73,
+  "elevation": 5.0
+ },
+ "RAS": {
+  "name": "PORT ARANSAS/MUSTANG BEACH ARPT",
+  "lon": -97.09,
+  "lat": 27.81,
+  "elevation": 2.0
+ },
+ "SGR": {
+  "name": "HOUSTON/HULL FIELD",
+  "lon": -95.6565,
+  "lat": 29.6222,
+  "elevation": 2.0
+ },
+ "T41": {
+  "name": "La Porte",
+  "lon": -95.0641,
+  "lat": 29.6692,
+  "elevation": 7.0
+ },
+ "TME": {
+  "name": "Houston Exec",
+  "lon": -95.8979,
+  "lat": 29.805,
+  "elevation": 50.6
+ },
+ "VCT": {
+  "name": "VICTORIA REGIONAL",
+  "lon": -96.9303,
+  "lat": 28.8614,
+  "elevation": 36.0
+ }
+}

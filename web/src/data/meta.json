@@ -1,0 +1,17 @@
+{
+  "generatedAt": "2026-11-19T17:24:52.351Z",
+  "sources": {
+    "track": "NOAA NHC HURDAT2 (hurdat2-1851-2025-092326.txt), storm AL022024 — https://www.nhc.noaa.gov/data/hurdat/",
+    "observations": "Iowa Environmental Mesonet ASOS archive, routine + special METAR, 2024-07-07 12Z – 2024-07-09 00Z — https://mesonet.agron.iastate.edu/request/download.phtml",
+    "stations": "Iowa Environmental Mesonet TX_ASOS network metadata",
+    "businesses": "SYNTHETIC — fictional businesses generated deterministically (seed 20240708). Not real customers."
+  },
+  "counts": {
+    "trackPoints": 16,
+    "stations": 20,
+    "observations": 1360,
+    "verifiable": 1312,
+    "rowsRejectedBySchema": 0,
+    "businesses": 80
+  }
+}
