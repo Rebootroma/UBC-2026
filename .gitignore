@@ -19,3 +19,5 @@ contracts/broadcast/*/31337/
 data-raw/hurdat2.txt
 .vercel
 contracts/lib/
+web/test-results/
+web/playwright-report/

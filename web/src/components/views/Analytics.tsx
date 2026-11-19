@@ -2,9 +2,10 @@
 
 import { useMemo, useState } from "react";
 import { Bar, BarChart, CartesianGrid, LabelList, ReferenceLine, ResponsiveContainer, Tooltip, XAxis, YAxis } from "recharts";
-import { BUSINESSES, OBSERVATIONS } from "@/lib/data";
+import { BUSINESSES, OBSERVATIONS, TRACK } from "@/lib/data";
+import { computeExposure } from "@/lib/exposure";
 import { formatUsd } from "@/lib/config";
-import { useApp } from "../state";
+import { REPLAY_END, useApp } from "../state";
 import { Panel, Tag, usdc } from "../ui";
 
 const SERIES = "#1898ba";
@@ -54,7 +55,7 @@ export function Analytics() {
                 <XAxis dataKey="label" tick={{ fill: "#8494b4", fontSize: 11 }} axisLine={false} tickLine={false} />
                 <YAxis tickFormatter={(v) => `$${Math.round(v / 1000)}k`} tick={{ fill: "#5a6a8a", fontSize: 10 }} axisLine={false} tickLine={false} />
                 <Tooltip cursor={{ fill: "#ffffff08" }} contentStyle={tooltipStyle} formatter={(v: number, _n, p) => [`${formatUsd(v)} · ${(p.payload as { count: number }).count} policies`, "Obligations"]} />
-                {reserveUsd > 0 && <ReferenceLine y={reserveUsd} stroke="#e6ecf7" strokeDasharray="4 4" label={{ value: `Funded reserve ${formatUsd(reserveUsd)}`, fill: "#e6ecf7", fontSize: 11, position: "insideTopRight" }} />}
+                {reserveUsd > 0 && <ReferenceLine y={reserveUsd} stroke="#e6ecf7" strokeDasharray="4 4" label={{ value: `Funded reserve ${formatUsd(reserveUsd)}`, fill: "#e6ecf7", fontSize: 11, position: "insideBottomLeft" }} />}
                 <Bar dataKey="usd" fill={SERIES} radius={[4, 4, 0, 0]} maxBarSize={56}>
                   <LabelList dataKey="count" position="top" formatter={(v: number) => `${v} paid`} fill="#8494b4" fontSize={11} />
                 </Bar>
@@ -79,12 +80,12 @@ export function Analytics() {
         </Panel>
 
         <Panel title="Coverage concentration" right={<div className="flex gap-1 text-[11px]">{(["town", "industry"] as const).map((d) => <button key={d} onClick={() => setDim(d)} className={`px-2 py-0.5 rounded ${dim === d ? "bg-panel-2 text-text" : "text-dim"}`}>{d}</button>)}</div>}>
-          <div className="h-[340px]">
+          <div className="h-[420px]">
             <ResponsiveContainer>
               <BarChart data={conc} layout="vertical" margin={{ top: 0, right: 48, bottom: 0, left: 8 }}>
                 <CartesianGrid stroke="#1c2840" horizontal={false} />
                 <XAxis type="number" tickFormatter={(v) => `$${Math.round(v / 1000)}k`} tick={{ fill: "#5a6a8a", fontSize: 10 }} axisLine={false} tickLine={false} />
-                <YAxis type="category" dataKey="key" width={130} tick={{ fill: "#8494b4", fontSize: 11 }} axisLine={false} tickLine={false} />
+                <YAxis type="category" dataKey="key" width={130} interval={0} tick={{ fill: "#8494b4", fontSize: 11 }} axisLine={false} tickLine={false} />
                 <Tooltip cursor={{ fill: "#ffffff08" }} contentStyle={tooltipStyle} formatter={(v: number, _n, p) => [`${formatUsd(v)} · ${(p.payload as { n: number }).n} businesses · ${((v / total) * 100).toFixed(1)}%`, "Coverage"]} />
                 <Bar dataKey="usd" fill={SERIES} radius={[0, 4, 4, 0]} maxBarSize={14}>
                   <LabelList dataKey="usd" position="right" formatter={(v: number) => `${((v / total) * 100).toFixed(0)}%`} fill="#8494b4" fontSize={10} />
@@ -104,10 +105,10 @@ export function Analytics() {
 }
 
 function BasisRisk() {
-  const { exposures } = useApp();
   const res = runScenario(1);
   const paid = new Set(res.hit.map((b) => b.id));
-  const highNotPaid = BUSINESSES.filter((b) => !paid.has(b.id)).map((b) => ({ b, e: exposures.get(b.id)! })).sort((a, b) => b.e.score - a.e.score).slice(0, 6);
+  // Exposure over the whole storm (end of replay), not the current replay time.
+  const highNotPaid = BUSINESSES.filter((b) => !paid.has(b.id)).map((b) => ({ b, e: computeExposure(b, TRACK, REPLAY_END) })).sort((a, b) => b.e.score - a.e.score).slice(0, 6);
   return (
     <div className="grid grid-cols-1 md:grid-cols-2 gap-4 text-[13px]">
       <div className="space-y-2 text-muted">

@@ -155,6 +155,8 @@ async function readReserveEvents(reserve: Address): Promise<ChainEvent[]> {
         ? `${EXPLORER}/api/v2/addresses/${reserve}/logs?${new URLSearchParams(Object.entries(body.next_page_params).map(([k, v]) => [k, String(v)]))}`
         : null;
     }
+    // An indexer that hasn't seen the contract (or a local fork) returns nothing: fall back to the node itself.
+    if (out.length === 0) throw new Error("indexer returned no logs");
     return out.sort((a, b) => Number(BigInt(b.blockNumber) - BigInt(a.blockNumber)) || b.logIndex - a.logIndex);
   } catch {
     return readReserveEventsRpc(reserve);
