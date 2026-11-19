@@ -6,7 +6,11 @@
     "dev": "next dev",
     "build": "next build",
     "start": "next start",
-    "lint": "eslint"
+    "lint": "eslint",
+    "fixtures": "tsx scripts/build-fixtures.ts",
+    "chain": "tsx --env-file=.env.local scripts/chain.ts",
+    "test": "vitest run",
+    "typecheck": "tsc --noEmit"
   },
   "dependencies": {
     "@anthropic-ai/sdk": "^1.10.0",
@@ -17,6 +21,7 @@
     "react": "19.1.0",
     "react-dom": "19.1.0",
     "recharts": "^2.15.4",
+    "server-only": "^0.0.1",
     "viem": "^2.58.1",
     "zod": "^3.25.76"
   },
