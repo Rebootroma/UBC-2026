@@ -60,7 +60,7 @@ export function CommandCenter() {
 }
 
 function ReplayBar() {
-  const { t, setT, playing, setPlaying, speed, setSpeed, reset, autoSettle, setAutoSettle, gates } = useApp();
+  const { t, setT, playing, setPlaying, speed, setSpeed, reset, autoSettle, setAutoSettle, voice, setVoice, voiceAvailable, gates } = useApp();
   const pct = (x: number) => ((x - REPLAY_START) / (REPLAY_END - REPLAY_START)) * 100;
   const landfall = TRACK.find((p) => p.landfall)!;
   const running = Object.values(gates).some((g) => g.status === "running");
@@ -108,6 +108,12 @@ function ReplayBar() {
           <input type="checkbox" checked={autoSettle} onChange={(e) => setAutoSettle(e.target.checked)} className="accent-cyan" />
           Settle on Arc
         </label>
+        {voiceAvailable && (
+          <label className="flex items-center gap-1.5 text-xs text-muted cursor-pointer" title="Spoken briefing for each settlement, generated with ElevenLabs from verified facts">
+            <input type="checkbox" checked={voice} onChange={(e) => setVoice(e.target.checked)} className="accent-cyan" />
+            Voice briefing
+          </label>
+        )}
       </div>
     </div>
   );

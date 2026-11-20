@@ -36,6 +36,10 @@ interface Ctx {
   setSpeed: (s: number) => void;
   autoSettle: boolean;
   setAutoSettle: (b: boolean) => void;
+  /** Spoken briefings (ElevenLabs). `voiceAvailable` is false when the server has no key. */
+  voice: boolean;
+  setVoice: (b: boolean) => void;
+  voiceAvailable: boolean;
   reset: () => void;
   selected: string | null;
   select: (id: string | null) => void;
@@ -66,6 +70,27 @@ export function AppProvider({ children }: { children: ReactNode }) {
   const [playing, setPlaying] = useState(false);
   const [speed, setSpeed] = useState(45); // replay minutes per second
   const [autoSettle, setAutoSettle] = useState(true);
+  const [voice, setVoice] = useState(true);
+  const [voiceAvailable, setVoiceAvailable] = useState(false);
+  const voiceRef = useRef(true);
+  voiceRef.current = voice && voiceAvailable;
+  // One clip at a time: briefings for gates that settle close together are queued, not overlapped.
+  const voiceQueue = useRef<Promise<void>>(Promise.resolve());
+  const speak = useCallback((observationId: string, variant: "paid" | "deferred") => {
+    voiceQueue.current = voiceQueue.current.then(
+      () =>
+        new Promise<void>((resolve) => {
+          if (!voiceRef.current) return resolve();
+          const a = new Audio(`/api/voice?obs=${encodeURIComponent(observationId)}&v=${variant}`);
+          a.onended = () => resolve();
+          a.onerror = () => resolve();
+          a.play().catch(() => resolve());
+        }),
+    );
+  }, []);
+  useEffect(() => {
+    fetch("/api/voice").then((r) => r.json()).then((j) => setVoiceAvailable(!!j.configured)).catch(() => setVoiceAvailable(false));
+  }, []);
   const [selected, select] = useState<string | null>("RSL-0001");
   const [chain, setChain] = useState<ChainState | null>(null);
   const [deployment, setDeployment] = useState<Deployment | null>(null);
@@ -107,12 +132,13 @@ export function AppProvider({ children }: { children: ReactNode }) {
         const r = await fetch("/api/settle", { method: "POST", headers: { "content-type": "application/json" }, body: JSON.stringify({ observationId }) });
         const result = (await r.json()) as SettlementResult;
         setGates((s) => ({ ...s, [observationId]: { observationId, status: result.status === "failed" ? "error" : "done", result, error: result.status === "failed" ? result.message : undefined } }));
+        if (result.status === "settled" && result.payouts.length) speak(observationId, result.payouts.some((p) => p.outcome !== "paid") ? "deferred" : "paid");
         await refreshChain();
       } catch (e) {
         setGates((s) => ({ ...s, [observationId]: { observationId, status: "error", error: (e as Error).message } }));
       }
     },
-    [refreshChain],
+    [refreshChain, speak],
   );
 
   // Replay clock
@@ -197,7 +223,7 @@ export function AppProvider({ children }: { children: ReactNode }) {
   );
 
   const value: Ctx = {
-    view, setView, t, setT, playing, setPlaying, speed, setSpeed, autoSettle, setAutoSettle, reset, selected, select,
+    view, setView, t, setT, playing, setPlaying, speed, setSpeed, autoSettle, setAutoSettle, voice, setVoice, voiceAvailable, reset, selected, select,
     chain, deployment, chainError, refreshChain, gates, runGate, attacks, runAttack, attackBusy, exposures, bizStatus, visibleObs,
   };
   return <C.Provider value={value}>{children}</C.Provider>;
