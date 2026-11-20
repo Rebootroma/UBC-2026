@@ -1,6 +1,6 @@
 # Build status
 
-Last updated: 2026-11-19. Branch: `feat/resilienceos`. Only results we actually ran are recorded here.
+Last updated: 2026-11-20. Branch: `main`. Only results we actually ran are recorded here.
 
 ## Summary
 
@@ -12,8 +12,8 @@ Last updated: 2026-11-19. Branch: `feat/resilienceos`. Only results we actually 
 | Attack console | ✅ Verified on Arc testnet by `eth_call` against the live contract: `UnauthorizedOracle(0x5A73…)`, `NotEligible(AlreadySettledForEvent)`, `ObservationAlreadySubmitted`. Also verified on fork: `UnauthorizedOracle(0x5A73…)`, `NotEligible(AlreadySettledForEvent)`, `ObservationAlreadySubmitted`; broadcast transactions mined with status `reverted` |
 | UI (command center, portfolio, contracts, payouts, intelligence, analytics) | ✅ Screenshot-reviewed in Chromium |
 | AI agents | ✅ Deterministic mode verified. LLM mode is implemented (claude-opus-5-5, structured outputs) but **not exercised**: no `ANTHROPIC_API_KEY` in this environment |
-| **Arc testnet deployment** | ✅ `0x630080c9840cac6ff94d5d3f1681a89dcf5c4510`, funded with 18 testnet USDC (faucet) |
-| Public web deployment | ❌ Not done (no hosting credentials). It runs locally per the README. |
+| **Arc testnet deployment** | ✅ `0xf9e22c4dfdb570bfa31a0254f30e5ec340bbe2b6`, funded with 46 testnet USDC (faucet). Redeployed 2026-11-20 with fresh testnet keys; the first deployment was `0x630080c9840cac6ff94d5d3f1681a89dcf5c4510` |
+| Public web deployment | ✅ https://resilienceos-six.vercel.app (Vercel, wired to the Arc testnet contract; `/api/state` verified) |
 | QuickNode Streams, ElevenLabs | ❌ Not built |
 
 ## Test results (run 2026-11-19)
@@ -31,18 +31,18 @@ Last updated: 2026-11-19. Branch: `feat/resilienceos`. Only results we actually 
 | Item | Value |
 | --- | --- |
 | Network | Arc testnet (5042002) |
-| ParametricReserve | [`0x630080c9840cac6ff94d5d3f1681a89dcf5c4510`](https://explorer.testnet.arc.io/address/0x630080c9840cac6ff94d5d3f1681a89dcf5c4510), block 73,088,774, deploy tx `0x1052cd44074166d6687dec367d1f16a577224ca9b1a301ac92d16c2e4e0e1386` |
-| Reserve funding | `0x3630c6982e7998d7b7912002c03a0050d6125c9665d6e534e3e4caffa6e08f62` (18 USDC) |
+| ParametricReserve | [`0xf9e22c4dfdb570bfa31a0254f30e5ec340bbe2b6`](https://explorer.testnet.arc.io/address/0xf9e22c4dfdb570bfa31a0254f30e5ec340bbe2b6), block 73,125,314, deploy tx `0x6c4bd4dacc6b9cef9145ac051be93cd24da6608ed6055a874debcb07ef13c940` |
+| Reserve funding | `0x018eb9cec661336d49f4d0ea7a607ecbce8fe0de82e407fcc48312083f2e55eb` (46 USDC) |
 | Token | Circle USDC `0x3600000000000000000000000000000000000000` |
-| Oracle | `0x613D761cE2E38287C4dF8Cc402884a60B63a450a` |
-| Admin / relayer | `0x183bBe4c2f5050d58055B6c6A4890927b6F67C6e` |
-| Payout tx example | [`0xf593411a8c2afe7467b00d6cd71a880caace68e24308357d42b4aed4cf3ed998`](https://explorer.testnet.arc.io/tx/0xf593411a8c2afe7467b00d6cd71a880caace68e24308357d42b4aed4cf3ed998): KPSX 47 kt observation, 4 policies paid (RSL-0001 0.50, RSL-0004 0.35, RSL-0005 0.40, RSL-0076 2.50 USDC), status success |
+| Oracle | `0xca05D80Abd44697a9891cb9487eEdC007932038C` |
+| Admin / relayer | `0xe4F777EA413bF9925be5351292e49aEd5C4fDF03` |
+| Payout tx example | [`0xd2089f6663554dbec0a1e68be0af8bf0321c08a9e315941bb94eff95ce55f7a1`](https://explorer.testnet.arc.io/tx/0xd2089f6663554dbec0a1e68be0af8bf0321c08a9e315941bb94eff95ce55f7a1): KPSX 42 kt observation, 1 policy paid (RSL-0005 Starboard Kids Academy, 0.40 USDC), status success |
 
 Current demo cohort and its registration txs: `web/src/data/deployment.json`. How to run the demo: README › Running the demo.
 
 ## Handoff (for a teammate continuing)
 
-1. Clone, check out `feat/resilienceos`, and follow README › Quick start.
+1. Clone `main` and follow README › Quick start.
 2. Private keys are not in the repo by design. Either get `web/.env.local` from the original builder through a private channel, or make new keys with `cast wallet new`. With new keys, the admin and oracle addresses above will change. That's fine: `deploy` grants the roles to whichever keys are in `.env.local`.
 3. Get free testnet USDC for the admin address at https://faucet.circle.com (Arc Testnet). No real money is involved.
 4. `cd web && npm run chain -- deploy && npm run chain -- fund 45 && npm run chain -- cohort`, then `npm run dev` and play the replay.
@@ -60,7 +60,7 @@ Current demo cohort and its registration txs: `web/src/data/deployment.json`. Ho
 
 ## Known issues and remaining work
 
-- Reserve holds about 14 USDC, so a full replay defers some claims (needs about 44 to pay all). Top up via faucet + `npm run chain -- fund`.
+- Reserve holds 45.6 USDC, enough for one full replay (44.1). After a full replay, top up via faucet + `npm run chain -- fund` before the next one, or later claims defer.
 - Attacks were not broadcast on testnet (`ALLOW_BROADCAST_ATTACKS` unset); the rejections shown are `eth_call` against the live contract.
 - Fixed during deploy: the explorer API field is `transaction_hash`; tx links were blank on live testnet before that.
 - The repo is private and must be made public for submission (team decision).
