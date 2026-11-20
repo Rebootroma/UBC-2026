@@ -212,6 +212,7 @@ export function GateStatus({ obsId }: { obsId: string }) {
         ))}
       </ul>
       <div className={clsx("text-xs font-medium", r.status === "settled" ? "text-green" : r.status === "already-settled" ? "text-cyan" : "text-amber")}>{r.message}</div>
+      {r.txHash && r.status === "settled" ? <a href={`/verify/${r.txHash}`} target="_blank" rel="noreferrer" className="inline-flex items-center gap-1 rounded border border-green/40 bg-green/5 px-1.5 py-0.5 text-[11px] font-medium text-green hover:bg-green/15">Verify this payout independently</a> : null}
       {r.txHash && r.explorerUrl && (
         <div className="flex items-center gap-2 text-[11px] text-muted">
           Tx <TxLink hash={r.txHash} url={r.explorerUrl} /> {r.blockNumber && <span>block {Number(r.blockNumber).toLocaleString()}</span>}

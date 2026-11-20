@@ -72,7 +72,7 @@ export function Payouts() {
                       <td className="px-3 py-2 text-xs">{b ? <>≥{b.policy.thresholdKt} kt at {b.policy.stations.join("/")}</> : "—"}{b && sus !== undefined && <div className={sus >= b.policy.thresholdKt ? "text-green" : "text-red"}>{sus} ≥ {b.policy.thresholdKt} ✓</div>}</td>
                       <td className="px-3 py-2 num">{usdc(e.args.amount)} USDC{b && <div className="text-[11px] text-dim">{formatUsd(b.policy.coverageUsd)} modeled</div>}</td>
                       <td className="px-3 py-2">{e.name === "PayoutDeferred" ? <span className="text-red text-xs">Deferred — shortfall {usdc(e.args.shortfall)}</span> : <span className="text-green text-xs">Paid to holder</span>}</td>
-                      <td className="px-3 py-2"><TxLink hash={e.txHash} url={txUrl(e.txHash)} /><div className="text-[10px] text-dim">block {Number(e.blockNumber).toLocaleString()}</div></td>
+                      <td className="px-3 py-2"><TxLink hash={e.txHash} url={txUrl(e.txHash)} /><div className="text-[10px] text-dim">block {Number(e.blockNumber).toLocaleString()}</div><a href={`/verify/${e.txHash}`} target="_blank" rel="noreferrer" className="mt-1 inline-flex items-center gap-1 rounded border border-green/40 bg-green/5 px-1.5 py-0.5 text-[11px] font-medium text-green hover:bg-green/15">Verify independently</a></td>
                     </tr>
                   );
                 })}
@@ -82,6 +82,7 @@ export function Payouts() {
         </Panel>
 
         <div className="space-y-3">
+          <StreamFeed />
           <Panel title="Reserve balance after each money movement (USDC)" right={<Tag kind="onchain" />}>
             {series.length < 2 ? (
               <div className="text-sm text-muted">Appears after funding and the first payout.</div>
@@ -113,5 +114,43 @@ export function Payouts() {
         </div>
       </div>
     </div>
+  );
+}
+
+const FEED_LABEL: Record<string, string> = {
+  PayoutExecuted: "Payout executed",
+  PayoutDeferred: "Payout deferred",
+  DeferredPayoutSettled: "Deferred payout settled",
+  ObservationAccepted: "Observation accepted",
+  ReserveFunded: "Reserve funded",
+  ReserveWithdrawn: "Reserve withdrawn",
+  PolicyRegistered: "Policy registered",
+  PolicyCancelled: "Policy cancelled",
+};
+
+/** Contract events pushed to the app by the QuickNode Stream, newest first. */
+function StreamFeed() {
+  const { chain } = useApp();
+  const pushed = (chain?.events ?? []).filter((e) => e.receivedAt).slice(0, 8);
+  const s = chain?.stream;
+  return (
+    <Panel title="Live chain feed" right={<span className="inline-flex items-center gap-1.5 text-[11px] text-cyan"><span className={`h-1.5 w-1.5 rounded-full ${s?.deliveries ? "bg-green animate-pulse" : "bg-dim"}`} />QuickNode Streams</span>}>
+      {pushed.length === 0 ? (
+        <div className="text-sm text-muted">Waiting for the next contract event. A QuickNode Stream watches every Arc testnet block and pushes this contract&apos;s events here by webhook the moment they are mined.</div>
+      ) : (
+        <ul className="space-y-2">
+          {pushed.map((e) => (
+            <li key={`${e.txHash}-${e.logIndex}`} className="flex items-start justify-between gap-2 text-xs">
+              <div className="min-w-0">
+                <div className="font-medium text-text">{FEED_LABEL[e.name] ?? e.name}{e.args.amount ? <span className="num text-muted"> · {usdc(e.args.amount)} USDC</span> : null}</div>
+                <div className="text-[11px] text-dim">block {Number(e.blockNumber).toLocaleString()} · pushed {e.receivedAt!.slice(11, 19)} UTC</div>
+              </div>
+              <TxLink hash={e.txHash} url={txUrl(e.txHash)} />
+            </li>
+          ))}
+        </ul>
+      )}
+      <p className="mt-2 text-[11px] text-dim">{s?.deliveries ? `${s.deliveries} webhook deliveries, ${s.events} events, HMAC-verified. Last block ${Number(s.lastBlock).toLocaleString()}.` : "No deliveries yet."}</p>
+    </Panel>
   );
 }

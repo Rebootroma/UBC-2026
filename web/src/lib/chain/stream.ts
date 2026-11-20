@@ -19,6 +19,8 @@ export interface StreamEvent {
   logIndex: number;
   args: Record<string, string>;
   timestamp?: number;
+  /** When the Stream delivered this log to /api/stream. */
+  receivedAt?: string;
 }
 
 interface Store {
@@ -86,8 +88,9 @@ export async function ingestStreamPayload(payload: unknown): Promise<number> {
       const blockNumber = BigInt(l.blockNumber ?? 0).toString();
       const logIndex = Number(BigInt(l.logIndex ?? 0));
       const key = `${l.transactionHash}-${logIndex}`;
+      const receivedAt = store.events[key]?.receivedAt ?? store.lastDeliveryAt ?? undefined;
       if (!store.events[key]) added += 1;
-      store.events[key] = { name: d.eventName, txHash: l.transactionHash, blockNumber, logIndex, args, timestamp: l.blockTimestamp ? Number(BigInt(l.blockTimestamp)) : undefined };
+      store.events[key] = { name: d.eventName, txHash: l.transactionHash, blockNumber, logIndex, args, timestamp: l.blockTimestamp ? Number(BigInt(l.blockTimestamp)) : undefined, receivedAt };
       if (!store.lastBlock || BigInt(blockNumber) > BigInt(store.lastBlock)) store.lastBlock = blockNumber;
     } catch {
       // not a ParametricReserve event

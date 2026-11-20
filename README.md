@@ -53,7 +53,8 @@ Automated parametric payouts are not new (see Arbol, FloodFlash, Etherisc in [`d
 | Attack console: forged oracle and duplicate payout, rejected by the contract's own revert | ✅ |
 | Five grounded AI agents (Claude, structured output, citation check, deterministic fallback) | ✅ |
 | Payout explorer from decoded chain logs, reserve accounting, scenario stress tests, basis risk | ✅ |
-| QuickNode Streams: reserve events pushed to the dashboard by webhook | ✅ |
+| Public payout verification page (`/verify/<tx>`): re-downloads the report from the NOAA archive, recomputes its hash and the EIP-712 digest, and compares them with the chain; the visitor can rerun the hashing in their own browser | ✅ |
+| QuickNode Streams: reserve events pushed to the dashboard by webhook, shown in a live chain feed | ✅ |
 | Voice (ElevenLabs) | ❌ not built, see [Sponsor integrations](#sponsor-integrations) |
 
 ## Architecture
@@ -200,8 +201,9 @@ Full script with lines to say: [`docs/DEMO_SCRIPT.md`](docs/DEMO_SCRIPT.md). The
 3. **Business tab.** Click a paid business (Gulf Coast Hardware) and open **"Why this business was paid"**: the rule, the reading, the raw METAR, the transaction.
 4. **AI Intelligence.** Click **Analyze** on Coverage, then on Integrity. Agents cite facts and have no keys. Without `ANTHROPIC_API_KEY` they run in deterministic mode, which is labeled in the UI. Say so if asked.
 5. **Contracts & Security.** Click **Simulate against Arc** on the forged-oracle attack → `UnauthorizedOracle`. Click it on the duplicate payout → `NotEligible(AlreadySettledForEvent)`. Both rejections come from the live contract.
-6. **Payout Explorer**, then **Risk Analytics**: decoded on-chain payouts, live reserve balance, stress test (a 1.25× storm exceeds the reserve).
-7. Press **Play** again to let the storm finish. Paid businesses turn green.
+6. **Verify independently.** In the Payout Explorer, click **Verify independently** on a payout. The page re-downloads the weather report from the public NOAA archive and shows it matches what the contract recorded. Change one character of the report, click **Recompute in my browser**, and the match fails.
+7. **Payout Explorer**, then **Risk Analytics**: decoded on-chain payouts, live reserve balance, stress test (a 1.25× storm exceeds the reserve).
+8. Press **Play** again to let the storm finish. Paid businesses turn green.
 
 ### 4. If something goes wrong
 

@@ -24,6 +24,8 @@ export interface ChainEvent {
   logIndex: number;
   args: Record<string, string>;
   timestamp?: number;
+  /** Set when a QuickNode Stream pushed this log to the app. */
+  receivedAt?: string;
 }
 
 export interface ChainState {
@@ -144,7 +146,11 @@ export async function readChainState(maxAgeMs = 4000): Promise<ChainState> {
 /** Stream-delivered events arrive before the explorer indexes them; merge both, newest first, one entry per log. */
 function mergeEvents(indexed: ChainEvent[], pushed: ChainEvent[]): ChainEvent[] {
   const byKey = new Map<string, ChainEvent>();
-  for (const e of [...pushed, ...indexed]) byKey.set(`${e.txHash.toLowerCase()}-${e.logIndex}`, e);
+  for (const e of [...pushed, ...indexed]) {
+    const key = `${e.txHash.toLowerCase()}-${e.logIndex}`;
+    const prev = byKey.get(key);
+    byKey.set(key, { ...e, timestamp: e.timestamp ?? prev?.timestamp, receivedAt: e.receivedAt ?? prev?.receivedAt });
+  }
   return [...byKey.values()].sort((a, b) => Number(BigInt(b.blockNumber) - BigInt(a.blockNumber)) || b.logIndex - a.logIndex);
 }
 
