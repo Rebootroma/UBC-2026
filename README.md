@@ -194,7 +194,7 @@ npm run dev                # open http://localhost:3000
 
 ### 3. The walkthrough
 
-Full script with lines to say: [`docs/DEMO_SCRIPT.md`](docs/DEMO_SCRIPT.md). The clicks:
+The clicks:
 
 1. **Command Center.** Choose speed **45 min/s** and press **Play**. The storm moves, stations light up and business dots change colour by exposure.
 2. **Settlement gate.** The replay pauses automatically when a station reading meets a policy trigger (first: Palacios KPSX, 42 kt, paying Starboard Kids Academy; the 47 kt reading that pays Gulf Coast Hardware is the second gate). The checklist turns green and a **transaction hash** appears. Click it to show the payout on the Arc explorer.
