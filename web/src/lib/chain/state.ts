@@ -5,7 +5,7 @@ import { DEPLOYMENT, EXPLORER, policyKey } from "./config";
 import { publicClient } from "./server";
 import { BUSINESSES } from "../data";
 import { POLICY_STATUS, type PolicyStatus } from "../types";
-import { streamEvents, streamStatus } from "./stream";
+import { streamSnapshot } from "./stream";
 
 export interface ChainPolicy {
   businessId: string;
@@ -81,7 +81,7 @@ export async function readChainState(maxAgeMs = 4000): Promise<ChainState> {
   try {
     const c = { address: reserve, abi: parametricReserveAbi } as const;
     const cohort = DEPLOYMENT.cohort;
-    const [blockNumber, scalars, policies, events] = await Promise.all([
+    const [blockNumber, scalars, policies, events, stream] = await Promise.all([
       publicClient.getBlockNumber(),
       publicClient.multicall({
         allowFailure: false,
@@ -103,6 +103,7 @@ export async function readChainState(maxAgeMs = 4000): Promise<ChainState> {
           })
         : Promise.resolve([]),
       readReserveEvents(reserve),
+      streamSnapshot(),
     ]);
     const [bal, free, owed, paid, exposure, obsCount, polCount, paused] = scalars as [bigint, bigint, bigint, bigint, bigint, bigint, bigint, boolean];
     const state: ChainState = {
@@ -128,9 +129,9 @@ export async function readChainState(maxAgeMs = 4000): Promise<ChainState> {
         payoutUnits: p.payoutAmount.toString(),
         holder: p.holder,
       })),
-      events: mergeEvents(events, streamEvents()),
+      events: mergeEvents(events, stream.events),
       fetchedAt: new Date().toISOString(),
-      stream: streamStatus(),
+      stream: stream.status,
     };
     cache = { at: Date.now(), state };
     return state;

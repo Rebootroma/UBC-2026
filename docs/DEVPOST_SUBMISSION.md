@@ -4,9 +4,9 @@
 
 **Tagline:** Financial first responders for a changing climate. Verified hurricane data triggers USDC payouts to small businesses on Arc, in minutes.
 
-**Track:** DeFi & Onchain Applications · **Chain award:** Arc · **Bounties:** none claimed (see docs/HACKATHON_STRATEGY.md)
+**Track:** DeFi & Onchain Applications · **Chain award:** Arc · **Bounties:** QuickNode Streams
 
-**Repository:** https://github.com/Rebootroma/UBC-2026 (branch `feat/resilienceos`)
+**Repository:** https://github.com/Rebootroma/UBC-2026 (branch `main`)
 
 ## What did you build?
 ResilienceOS is a disaster financial-response system for small businesses. It replays Hurricane Beryl (Texas, July 2024) from NOAA's best track and 1,360 real weather-station reports, on an interactive command-center map of 80 fictional covered businesses. Each business holds a predefined parametric policy, for example *"pay $5,000 if station KPSX reports ≥ 45 kt sustained wind."* When a verified station report meets a policy's trigger, the platform validates the raw report, an authorized oracle signs it, and our `ParametricReserve` smart contract on Arc testnet checks the rule itself and pays the business in USDC. Five AI agents explain the event, the exposure, the coverage, data integrity and the reserve's solvency. They cannot move money.

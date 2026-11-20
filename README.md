@@ -53,7 +53,8 @@ Automated parametric payouts are not new (see Arbol, FloodFlash, Etherisc in [`d
 | Attack console: forged oracle and duplicate payout, rejected by the contract's own revert | ✅ |
 | Five grounded AI agents (Claude, structured output, citation check, deterministic fallback) | ✅ |
 | Payout explorer from decoded chain logs, reserve accounting, scenario stress tests, basis risk | ✅ |
-| Voice (ElevenLabs), QuickNode Streams | ❌ not built, see [Sponsor integrations](#sponsor-integrations) |
+| QuickNode Streams: reserve events pushed to the dashboard by webhook | ✅ |
+| Voice (ElevenLabs) | ❌ not built, see [Sponsor integrations](#sponsor-integrations) |
 
 ## Architecture
 
@@ -224,7 +225,7 @@ Never claim a payout the explorer doesn't show.
 | Destination | Webhook, `POST https://resilienceos-six.vercel.app/api/stream` | Pushes each payout to the dashboard as it is mined, without waiting for the block explorer to index it |
 | Security token | Set as `QUICKNODE_STREAM_TOKEN` on the host | The route recomputes HMAC-SHA256 over nonce + timestamp + body and rejects anything else with 401 |
 
-The receiver is `web/src/lib/chain/stream.ts`. It decodes each log with the contract ABI, ignores logs from any other address, de-duplicates by transaction and log index, and merges the events into `/api/state`. Events are held in process memory, so after a cold start the app falls back to the explorer and RPC read until the next delivery. `GET /api/stream` shows delivery counters, and the header shows a "QuickNode Stream" badge once a delivery has arrived.
+The receiver is `web/src/lib/chain/stream.ts`. It decodes each log with the contract ABI, ignores logs from any other address, de-duplicates by transaction and log index, and merges the events into `/api/state`. Events are kept in the Vercel Runtime Cache so every function instance sees them; the cache is regional and can be evicted, so the explorer and RPC read stays as the fallback. `GET /api/stream` shows delivery counters, and the header shows a "QuickNode Stream" badge once a delivery has arrived. The Stream starts at the latest block (no backfill) and runs until paused.
 
 ## Installation
 
@@ -298,7 +299,7 @@ NHC's own Beryl report independently lists KPSX at 50 kt sustained / 77 kt peak 
 | Sponsor | Status |
 | --- | --- |
 | **Circle Arc** | Core. Settlement contract on Arc testnet paying Circle USDC. Gas is paid in USDC. |
-| QuickNode Streams | Receiver built, Stream not yet created. `/api/stream` accepts a Streams webhook, verifies its HMAC signature, decodes `ParametricReserve` logs and merges them into the dashboard state. Verified locally with a signed payload built from a real payout receipt. See [QuickNode Stream configuration](#quicknode-stream-configuration). We claim the bounty only once the Stream is live. |
+| QuickNode Streams | ✅ Live. Stream `resilienceos-reserve-events` on Arc testnet filters every block's logs down to `ParametricReserve` events and pushes them to `/api/stream`, which verifies the HMAC signature and feeds the dashboard. Verified with a real `ReserveFunded` event delivered by the Stream. See [QuickNode Stream configuration](#quicknode-stream-configuration). |
 | ElevenLabs | Not integrated. We do not claim it. |
 | Grok Bot, Gemini Prediction Markets | Not used. Neither fits the product. |
 

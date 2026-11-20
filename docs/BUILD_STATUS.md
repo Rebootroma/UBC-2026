@@ -14,7 +14,8 @@ Last updated: 2026-11-20. Branch: `main`. Only results we actually ran are recor
 | AI agents | ✅ Deterministic mode verified. LLM mode is implemented (claude-opus-5-5, structured outputs) but **not exercised**: no `ANTHROPIC_API_KEY` in this environment |
 | **Arc testnet deployment** | ✅ `0xf9e22c4dfdb570bfa31a0254f30e5ec340bbe2b6`, funded with 46 testnet USDC (faucet). Redeployed 2026-11-20 with fresh testnet keys; the first deployment was `0x630080c9840cac6ff94d5d3f1681a89dcf5c4510` |
 | Public web deployment | ✅ https://resilienceos-six.vercel.app (Vercel, wired to the Arc testnet contract; `/api/state` verified) |
-| QuickNode Streams, ElevenLabs | ❌ Not built |
+| QuickNode Streams | ✅ Stream `resilienceos-reserve-events` (Arc testnet, Logs, filtered to the reserve) delivers to `/api/stream`; a real `ReserveFunded` event arrived on 2026-11-20 |
+| ElevenLabs | ❌ Not built |
 
 ## Test results (run 2026-11-19)
 
@@ -60,7 +61,7 @@ Current demo cohort and its registration txs: `web/src/data/deployment.json`. Ho
 
 ## Known issues and remaining work
 
-- Reserve holds 45.6 USDC, enough for one full replay (44.1). After a full replay, top up via faucet + `npm run chain -- fund` before the next one, or later claims defer.
+- Reserve holds 46.6 USDC, enough for one full replay (44.1). After a full replay, top up via faucet + `npm run chain -- fund` before the next one, or later claims defer.
 - Attacks were not broadcast on testnet (`ALLOW_BROADCAST_ATTACKS` unset); the rejections shown are `eth_call` against the live contract.
 - Fixed during deploy: the explorer API field is `transaction_hash`; tx links were blank on live testnet before that.
 - The repo is private and must be made public for submission (team decision).
