@@ -16,7 +16,10 @@ import { evaluatePolicy } from "@/lib/policy";
 import { BUSINESSES, OBSERVATIONS } from "@/lib/data";
 import { ELIGIBILITY_CODES } from "@/lib/types";
 
-const ANVIL = path.join(os.homedir(), ".foundry", "bin", "anvil");
+// foundryup installs to ~/.foundry/bin; Homebrew and Linux packages put anvil elsewhere.
+const ANVIL =
+  [path.join(os.homedir(), ".foundry", "bin", "anvil"), "/opt/homebrew/bin/anvil", "/usr/local/bin/anvil", "/usr/bin/anvil"].find((p) => fs.existsSync(p)) ??
+  path.join(os.homedir(), ".foundry", "bin", "anvil");
 const ART = path.resolve(__dirname, "../../contracts/out/ParametricReserve.t.sol/TestUSD.json");
 const enabled = fs.existsSync(ANVIL) && fs.existsSync(ART);
 const PORT = 8611;
