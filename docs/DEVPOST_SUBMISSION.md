@@ -19,7 +19,7 @@ Small businesses run out of cash long before disaster money arrives. The median 
 2. **Exposure:** a transparent model (modeled wind from the best track, a surge proxy, industry sensitivity and proximity) ranks who needs attention. It never decides payouts.
 3. **Trigger:** a deterministic evaluator mirrors the contract. A parity test proves the two agree on 240 real policy/observation pairs.
 4. **Settlement:** the oracle signs an EIP-712 observation. `submitAndSettle` on Arc verifies `ORACLE_ROLE`, replay protection, station, window and threshold, then pays the registered holder in USDC. If the reserve is short, the claim is recorded as owed.
-5. **Explanation:** five Claude agents get server-computed fact sheets, return schema-validated output and must cite fact IDs. Uncited findings are dropped. They have no tools and no keys.
+5. **Explanation:** five AI agents (Google Gemini) get server-computed fact sheets, return schema-validated output and must cite fact IDs. Uncited findings are dropped. They have no tools and no keys.
 6. **Security console:** a forged observation from an unauthorized key and a duplicate payout attempt are sent to the live contract. Both are rejected by its own reverts.
 
 ## What makes it unique?
@@ -38,7 +38,7 @@ Small businesses run out of cash long before disaster money arrives. The median 
 k-of-n oracle signers over multiple data providers; live NWS feeds instead of a replay; QuickNode Streams for event-driven updates; Circle Wallets so businesses never see crypto; a partner pilot with a Gulf Coast CDFI or resilience fund; and a licensed carrier partner for an insurance version.
 
 ## Built with
-Solidity, Foundry, OpenZeppelin, Circle Arc testnet, USDC, viem, Next.js, React, TypeScript, Tailwind, MapLibre GL, Recharts, Zod, Anthropic Claude (claude-opus-5-5, structured outputs), Vitest, Playwright. Data: NOAA NHC HURDAT2, NOAA ASOS via Iowa Environmental Mesonet, CARTO/OSM basemap.
+Solidity, Foundry, OpenZeppelin, Circle Arc testnet, USDC, viem, Next.js, React, TypeScript, Tailwind, MapLibre GL, Recharts, Zod, Google Gemini (structured outputs), ElevenLabs text-to-speech, QuickNode Streams, Vitest, Playwright. Data: NOAA NHC HURDAT2, NOAA ASOS via Iowa Environmental Mesonet, CARTO/OSM basemap.
 
 ## Contract addresses
 - Live demo: https://resilienceos-six.vercel.app

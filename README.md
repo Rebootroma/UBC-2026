@@ -51,7 +51,7 @@ Automated parametric payouts are not new (see Arbol, FloodFlash, Etherisc in [`d
 | `ParametricReserve` contract: oracle registry, EIP-712 observations, deterministic eligibility, replay protection, deferred payouts, pause | ✅ 30 Foundry tests |
 | Settlement service: oracle signs → `submitAndSettle` → receipt decoded → dashboard updated | ✅ live on Arc testnet: [example payout tx](https://explorer.testnet.arc.io/tx/0xd2089f6663554dbec0a1e68be0af8bf0321c08a9e315941bb94eff95ce55f7a1) |
 | Attack console: forged oracle and duplicate payout, rejected by the contract's own revert | ✅ |
-| Five grounded AI agents (Claude, structured output, citation check, deterministic fallback) | ✅ |
+| Five grounded AI agents (Gemini or Claude, structured output, citation check, deterministic fallback) | ✅ live on the hosted demo with Gemini |
 | Payout explorer from decoded chain logs, reserve accounting, scenario stress tests, basis risk | ✅ |
 | Public payout verification page (`/verify/<tx>`): re-downloads the report from the NOAA archive, recomputes its hash and the EIP-712 digest, and compares them with the chain; the visitor can rerun the hashing in their own browser | ✅ |
 | QuickNode Streams: reserve events pushed to the dashboard by webhook, shown in a live chain feed | ✅ |
@@ -72,7 +72,7 @@ Automated parametric payouts are not new (see Arbol, FloodFlash, Etherisc in [`d
         Geospatial exposure engine        Deterministic policy evaluator ◄── parity-tested
         (modeled, ranks attention)        (mirrors checkEligibility)          against the contract
                    │                               │
-                   ├──────► AI agents (read-only fact sheets → Claude → Zod → citation check)
+                   ├──────► AI agents (read-only fact sheets → LLM → Zod → citation check)
                    │                               │
                    ▼                               ▼
           Command center UI ◄──────── Settlement API: validate → oracle EIP-712 signature
@@ -122,7 +122,7 @@ Five agents turn the event into explanations a business owner, an adjuster or a 
 | Fraud & Integrity | Withheld records, silent stations (KPSX went silent at 10:22Z mid-storm), attack controls |
 | Financial Response | Reserve, payouts, deferrals, solvency from on-chain reads |
 
-**Safety design.** Agents get a *fact sheet* that the server computes from verified data and chain reads. They have no tools, keys, wallet or network access. Output must match a strict Zod schema. Every finding must cite fact IDs, and findings citing unknown IDs are dropped and counted. METAR text is passed as data, and the system prompt tells the model to ignore any instructions inside it. Payouts come only from the deterministic evaluator and the contract. With `AGENTS_MODE=deterministic` or no API key, agents fall back to a fact-only summary and every payout is identical. Model: `claude-opus-5-5` with structured outputs.
+**Safety design.** Agents get a *fact sheet* that the server computes from verified data and chain reads. They have no tools, keys, wallet or network access. Output must match a strict Zod schema. Every finding must cite fact IDs, and findings citing unknown IDs are dropped and counted. METAR text is passed as data, and the system prompt tells the model to ignore any instructions inside it. Payouts come only from the deterministic evaluator and the contract. With `AGENTS_MODE=deterministic` or no API key, agents fall back to a fact-only summary and every payout is identical. Models: Google Gemini (`gemini-flash-lite-latest`) on the hosted demo, or Claude (`claude-opus-5-5`) when an Anthropic key is set; both use structured outputs and the same checks. A reply that is only too long is trimmed to the schema limits; anything else that fails validation falls back to the deterministic summary.
 
 ## Economic design and risk assumptions (DeFi track requirement)
 
@@ -199,7 +199,7 @@ Full script with lines to say: [`docs/DEMO_SCRIPT.md`](docs/DEMO_SCRIPT.md). The
 1. **Command Center.** Choose speed **45 min/s** and press **Play**. The storm moves, stations light up and business dots change colour by exposure.
 2. **Settlement gate.** The replay pauses automatically when a station reading meets a policy trigger (first: Palacios KPSX, 42 kt, paying Starboard Kids Academy; the 47 kt reading that pays Gulf Coast Hardware is the second gate). The checklist turns green and a **transaction hash** appears. Click it to show the payout on the Arc explorer.
 3. **Business tab.** Click a paid business (Gulf Coast Hardware) and open **"Why this business was paid"**: the rule, the reading, the raw METAR, the transaction.
-4. **AI Intelligence.** Click **Analyze** on Coverage, then on Integrity. Agents cite facts and have no keys. Without `ANTHROPIC_API_KEY` they run in deterministic mode, which is labeled in the UI. Say so if asked.
+4. **AI Intelligence.** Click **Analyze** on Coverage, then on Integrity. Agents cite facts and have no keys. Each card is labeled with the model that wrote it, or "deterministic" when no model key is set or the model call fails. Say so if asked.
 5. **Contracts & Security.** Click **Simulate against Arc** on the forged-oracle attack → `UnauthorizedOracle`. Click it on the duplicate payout → `NotEligible(AlreadySettledForEvent)`. Both rejections come from the live contract.
 6. **Verify independently.** In the Payout Explorer, click **Verify independently** on a payout. The page re-downloads the weather report from the public NOAA archive and shows it matches what the contract recorded. Change one character of the report, click **Recompute in my browser**, and the match fails.
 7. **Payout Explorer**, then **Risk Analytics**: decoded on-chain payouts, live reserve balance, stress test (a 1.25× storm exceeds the reserve).
@@ -255,7 +255,8 @@ npm run dev                     # http://localhost:3000
 | `ORACLE_PRIVATE_KEY` | signing observations | Granted `ORACLE_ROLE` at deploy |
 | `ATTACKER_PRIVATE_KEY` | attack demo | A key with **no** role |
 | `ARC_RPC_URL` | optional | Defaults to `https://rpc.testnet.arc.network` |
-| `ANTHROPIC_API_KEY` | optional | Without it, agents run in deterministic mode |
+| `GEMINI_API_KEY` | optional | Agents use Google Gemini (`gemini-flash-lite-latest`, free tier; override with `GEMINI_MODEL`) |
+| `ANTHROPIC_API_KEY` | optional | Agents use Claude instead; takes precedence over Gemini. With neither key, agents run in deterministic mode |
 | `AGENTS_MODE` | optional | `deterministic` forces the no-LLM path |
 | `ALLOW_BROADCAST_ATTACKS` | optional | `true` lets the attack console send real (reverting) transactions |
 

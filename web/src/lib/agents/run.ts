@@ -50,8 +50,62 @@ function getClient() {
   return client;
 }
 
+const GEMINI_MODEL = process.env.GEMINI_MODEL || "gemini-flash-lite-latest";
+const geminiKey = () => process.env.GEMINI_API_KEY || process.env.GOOGLE_API_KEY || null;
+
 export function llmAvailable() {
-  return getClient() !== null && process.env.AGENTS_MODE !== "deterministic";
+  return (getClient() !== null || geminiKey() !== null) && process.env.AGENTS_MODE !== "deterministic";
+}
+
+/** JSON schema for Gemini structured output; mirrors ReportSchema (which still validates the reply). */
+const GEMINI_SCHEMA = {
+  type: "OBJECT",
+  properties: {
+    headline: { type: "STRING" },
+    findings: {
+      type: "ARRAY",
+      items: { type: "OBJECT", properties: { text: { type: "STRING" }, evidence: { type: "ARRAY", items: { type: "STRING" } } }, required: ["text", "evidence"] },
+    },
+    uncertainty: { type: "STRING" },
+    recommendedActions: { type: "ARRAY", items: { type: "STRING" } },
+  },
+  required: ["headline", "findings", "uncertainty", "recommendedActions"],
+};
+
+/** Trim an otherwise well-formed reply to the schema's size limits instead of discarding it for one long sentence. */
+function clampReport(raw: unknown): unknown {
+  if (!raw || typeof raw !== "object") return raw;
+  const r = raw as Record<string, unknown>;
+  const cut = (v: unknown, n: number) => (typeof v === "string" && v.length > n ? `${v.slice(0, n - 1)}…` : v);
+  return {
+    headline: cut(r.headline, 160),
+    findings: Array.isArray(r.findings)
+      ? r.findings.slice(0, 5).map((f) => {
+          const x = (f ?? {}) as Record<string, unknown>;
+          return { text: cut(x.text, 400), evidence: Array.isArray(x.evidence) ? x.evidence.slice(0, 4) : x.evidence };
+        })
+      : r.findings,
+    uncertainty: cut(r.uncertainty, 300),
+    recommendedActions: Array.isArray(r.recommendedActions) ? r.recommendedActions.slice(0, 3).map((a) => cut(a, 200)) : r.recommendedActions,
+  };
+}
+
+/** Same prompt and the same guardrails as the Claude path, on Google's Gemini API (usable on its free tier). */
+async function runGemini(key: string, prompt: string): Promise<unknown> {
+  const res = await fetch(`https://generativelanguage.googleapis.com/v1beta/models/${GEMINI_MODEL}:generateContent`, {
+    method: "POST",
+    headers: { "content-type": "application/json", "x-goog-api-key": key },
+    body: JSON.stringify({
+      systemInstruction: { parts: [{ text: `${SYSTEM}\nLimits: headline under 160 characters, 1 to 5 findings each under 400 characters with 1 to 4 evidence ids, uncertainty under 300 characters, at most 3 recommended actions each under 200 characters.` }] },
+      contents: [{ role: "user", parts: [{ text: prompt }] }],
+      generationConfig: { responseMimeType: "application/json", responseSchema: GEMINI_SCHEMA, temperature: 0.2 },
+    }),
+    signal: AbortSignal.timeout(45_000),
+  });
+  if (!res.ok) throw new Error(`Gemini ${res.status}: ${(await res.text()).slice(0, 200)}`);
+  const body = (await res.json()) as { candidates?: { content?: { parts?: { text?: string }[] } }[] };
+  const text = body.candidates?.[0]?.content?.parts?.map((p) => p.text ?? "").join("") ?? "";
+  return JSON.parse(text);
 }
 
 /** Validate citations: drop findings that cite unknown fact ids. */
@@ -74,6 +128,21 @@ export function deterministicReport(agent: AgentId, facts: Fact[]): Report {
 export async function runAgent(agent: AgentId, facts: Fact[]): Promise<AgentReport> {
   const base = { agent, agentName: AGENTS[agent].name, facts, generatedAt: new Date().toISOString() };
   const c = llmAvailable() ? getClient() : null;
+  const gk = llmAvailable() && !c ? geminiKey() : null;
+  if (gk && facts.length > 0) {
+    try {
+      const raw = await runGemini(gk, `Your role: ${AGENTS[agent].role}\n\nFacts (JSON):\n${JSON.stringify(facts, null, 1)}\n\nWrite your report.`);
+      const parsed = ReportSchema.safeParse(clampReport(raw));
+      if (parsed.success) {
+        const { report, dropped } = groundReport(parsed.data, facts);
+        if (report.findings.length > 0) return { ...base, ...report, mode: "llm", model: GEMINI_MODEL, droppedFindings: dropped };
+      } else {
+        console.warn(`[agent ${agent}] Gemini reply failed schema validation, using deterministic fallback`);
+      }
+    } catch (e) {
+      console.warn(`[agent ${agent}] Gemini unavailable, using deterministic fallback:`, (e as Error).message);
+    }
+  }
   if (c && facts.length > 0) {
     try {
       const res = await c.messages.parse({

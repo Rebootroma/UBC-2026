@@ -11,7 +11,7 @@ Last updated: 2026-11-20. Branch: `main`. Only results we actually ran are recor
 | Settlement service + oracle | ✅ **Live on Arc testnet**: real USDC payouts (see Deployment record). Also verified on a local Anvil fork with a mock token |
 | Attack console | ✅ Verified on Arc testnet by `eth_call` against the live contract: `UnauthorizedOracle(0x5A73…)`, `NotEligible(AlreadySettledForEvent)`, `ObservationAlreadySubmitted`. Also verified on fork: `UnauthorizedOracle(0x5A73…)`, `NotEligible(AlreadySettledForEvent)`, `ObservationAlreadySubmitted`; broadcast transactions mined with status `reverted` |
 | UI (command center, portfolio, contracts, payouts, intelligence, analytics) | ✅ Screenshot-reviewed in Chromium |
-| AI agents | ✅ Deterministic mode verified. LLM mode is implemented (claude-opus-5-5, structured outputs) but **not exercised**: no `ANTHROPIC_API_KEY` in this environment |
+| AI agents | ✅ LLM mode exercised on 2026-11-20 with Google Gemini (`gemini-flash-lite-latest`): all five agents returned schema-valid, fully cited reports locally and on the hosted demo. Deterministic fallback verified (it took over when a model call timed out). The Claude path is implemented but not exercised: no `ANTHROPIC_API_KEY` |
 | **Arc testnet deployment** | ✅ `0xf9e22c4dfdb570bfa31a0254f30e5ec340bbe2b6`, funded with 46 testnet USDC (faucet). Redeployed 2026-11-20 with fresh testnet keys; the first deployment was `0x630080c9840cac6ff94d5d3f1681a89dcf5c4510` |
 | Public web deployment | ✅ https://resilienceos-six.vercel.app (Vercel, wired to the Arc testnet contract; `/api/state` verified) |
 | QuickNode Streams | ✅ Stream `resilienceos-reserve-events` (Arc testnet, Logs, filtered to the reserve) delivers to `/api/stream`; a real `ReserveFunded` event arrived on 2026-11-20 |
@@ -21,8 +21,8 @@ Last updated: 2026-11-20. Branch: `main`. Only results we actually ran are recor
 
 | Suite | Command | Result |
 | --- | --- | --- |
-| Foundry | `cd contracts && forge test` | **30 passed, 0 failed** (incl. 512-run fuzz, reentrancy, deferral) |
-| Vitest unit | `cd web && npm test` | **33 passed** |
+| Foundry | `cd contracts && forge test` | **30 passed, 0 failed** (incl. 512-run fuzz, reentrancy, deferral); re-run 2026-11-20 on Foundry 1.10.0 |
+| Vitest unit | `cd web && npm test` | **34 passed** including parity (re-run 2026-11-20) |
 | Contract parity (Anvil) | part of `npm test` | **passed**: 240 policy×observation pairs, evaluator == `checkEligibility` |
 | Playwright E2E | `BASE_URL=http://localhost:3100 npx playwright test` | **1 passed**, against a local fork, and again on Nov 19 against **live Arc testnet** |
 | Types / lint | `npm run typecheck`, `npx eslint src --quiet` | clean |
@@ -67,4 +67,3 @@ Current demo cohort and its registration txs: `web/src/data/deployment.json`. Ho
 - The repo is private and must be made public for submission (team decision).
 - Demo video not recorded.
 - At demo scale, Beryl's 30 triggered policies need about 44.1 USDC. If the reserve holds less, later payouts show as deferred, which is correct behaviour.
-- Agents in LLM mode are untested without an API key.
