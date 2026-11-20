@@ -55,7 +55,7 @@ Automated parametric payouts are not new (see Arbol, FloodFlash, Etherisc in [`d
 | Payout explorer from decoded chain logs, reserve accounting, scenario stress tests, basis risk | ✅ |
 | Public payout verification page (`/verify/<tx>`): re-downloads the report from the NOAA archive, recomputes its hash and the EIP-712 digest, and compares them with the chain; the visitor can rerun the hashing in their own browser | ✅ |
 | QuickNode Streams: reserve events pushed to the dashboard by webhook, shown in a live chain feed | ✅ |
-| Voice (ElevenLabs) | ❌ not built, see [Sponsor integrations](#sponsor-integrations) |
+| Spoken settlement briefings (ElevenLabs text-to-speech): each payout is announced aloud from verified facts, not from an LLM | ✅ |
 
 ## Architecture
 
@@ -302,7 +302,7 @@ NHC's own Beryl report independently lists KPSX at 50 kt sustained / 77 kt peak 
 | --- | --- |
 | **Circle Arc** | Core. Settlement contract on Arc testnet paying Circle USDC. Gas is paid in USDC. |
 | QuickNode Streams | ✅ Live. Stream `resilienceos-reserve-events` on Arc testnet filters every block's logs down to `ParametricReserve` events and pushes them to `/api/stream`, which verifies the HMAC signature and feeds the dashboard. Verified with a real `ReserveFunded` event delivered by the Stream. See [QuickNode Stream configuration](#quicknode-stream-configuration). |
-| ElevenLabs | Not integrated. We do not claim it. |
+| ElevenLabs | Integrated. `/api/voice` turns each settlement gate into a spoken briefing with ElevenLabs text-to-speech (`eleven_flash_v2_5`). The script is built from the verified observation and the triggered policies, so the voice only says what the contract acted on. Clips are cached, so each gate is generated once. Toggle: **Voice briefing** in the Command Center. |
 | Grok Bot, Gemini Prediction Markets | Not used. Neither fits the product. |
 
 ## Limitations

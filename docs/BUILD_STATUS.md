@@ -15,7 +15,7 @@ Last updated: 2026-11-20. Branch: `main`. Only results we actually ran are recor
 | **Arc testnet deployment** | ✅ `0xf9e22c4dfdb570bfa31a0254f30e5ec340bbe2b6`, funded with 46 testnet USDC (faucet). Redeployed 2026-11-20 with fresh testnet keys; the first deployment was `0x630080c9840cac6ff94d5d3f1681a89dcf5c4510` |
 | Public web deployment | ✅ https://resilienceos-six.vercel.app (Vercel, wired to the Arc testnet contract; `/api/state` verified) |
 | QuickNode Streams | ✅ Stream `resilienceos-reserve-events` (Arc testnet, Logs, filtered to the reserve) delivers to `/api/stream`; a real `ReserveFunded` event arrived on 2026-11-20 |
-| ElevenLabs | ❌ Not built |
+| ElevenLabs voice briefings | ✅ `/api/voice` generates and caches a spoken briefing per settlement gate; all 11 clips generated on the hosted app on 2026-11-20 |
 
 ## Test results (run 2026-11-19)
 
