@@ -3,7 +3,7 @@
 import { useMemo } from "react";
 import { Area, AreaChart, CartesianGrid, ResponsiveContainer, Tooltip, XAxis, YAxis } from "recharts";
 import { BUSINESSES, OBSERVATIONS, STATION_BY_ID } from "@/lib/data";
-import { policyKey, stationKey, txUrl } from "@/lib/chain/config";
+import { businessKey, policyKey, stationKey, txUrl } from "@/lib/chain/config";
 import { formatUsd } from "@/lib/config";
 import { useApp } from "../state";
 import { Panel, Tag, TxLink, usdc } from "../ui";
@@ -16,6 +16,18 @@ export function Payouts() {
   const byPolicy = useMemo(() => new Map(cohort ? BUSINESSES.map((b) => [policyKey(cohort, b.policy.policyNumber).toLowerCase(), b]) : []), [cohort]);
   const stationByKey = useMemo(() => new Map([...STATION_BY_ID.keys()].map((id) => [stationKey(id).toLowerCase(), id])), []);
   const events = chain?.events ?? [];
+  // Payouts from earlier cohorts are not derivable from the current cohort id, so also resolve
+  // each policy through its on-chain PolicyRegistered log (policyId -> businessRef -> business).
+  const byRegistration = useMemo(() => {
+    const byRef = new Map(BUSINESSES.map((b) => [businessKey(b.id).toLowerCase(), b]));
+    const m = new Map<string, (typeof BUSINESSES)[number]>();
+    for (const e of chain?.events ?? []) {
+      if (e.name !== "PolicyRegistered") continue;
+      const biz = byRef.get(e.args.businessRef?.toLowerCase());
+      if (biz && e.args.policyId) m.set(e.args.policyId.toLowerCase(), biz);
+    }
+    return m;
+  }, [chain]);
   const accepted = new Map(events.filter((e) => e.name === "ObservationAccepted").map((e) => [e.args.digest?.toLowerCase(), e]));
   const payouts = events.filter((e) => ["PayoutExecuted", "PayoutDeferred", "DeferredPayoutSettled"].includes(e.name));
 
@@ -46,7 +58,8 @@ export function Payouts() {
               </thead>
               <tbody>
                 {payouts.map((e) => {
-                  const b = byPolicy.get(e.args.policyId?.toLowerCase());
+                  const pid = e.args.policyId?.toLowerCase();
+                  const b = byPolicy.get(pid) ?? byRegistration.get(pid);
                   const obsEv = e.args.observationDigest ? accepted.get(e.args.observationDigest.toLowerCase()) : undefined;
                   const station = obsEv ? stationByKey.get(obsEv.args.stationId?.toLowerCase()) : undefined;
                   const sus = obsEv ? Number(obsEv.args.sustainedDeciKnots) / 10 : undefined;
@@ -54,7 +67,7 @@ export function Payouts() {
                   const raw = station && at ? OBSERVATIONS.find((o) => o.stationId === station && o.t === at) : undefined;
                   return (
                     <tr key={`${e.txHash}-${e.logIndex}`} className="border-b border-line align-top">
-                      <td className="px-3 py-2"><div className="font-medium">{b?.name ?? "Unknown policy"}</div><div className="text-[11px] text-dim">{b?.policy.policyNumber} · {b?.town}</div></td>
+                      <td className="px-3 py-2"><div className="font-medium">{b?.name ?? "Unknown policy"}</div><div className="text-[11px] text-dim">{b ? `${b.policy.policyNumber} · ${b.town}` : `${pid?.slice(0, 10)}…`}</div></td>
                       <td className="px-3 py-2 text-xs">{station ? <>{station} · <b>{sus} kt</b><div className="text-dim">{at ? new Date(at * 1000).toISOString().slice(5, 16).replace("T", " ") : ""} UTC</div></> : "—"}{raw && <div className="font-mono text-[10px] text-dim max-w-[220px] truncate" title={raw.metar}>{raw.metar}</div>}</td>
                       <td className="px-3 py-2 text-xs">{b ? <>≥{b.policy.thresholdKt} kt at {b.policy.stations.join("/")}</> : "—"}{b && sus !== undefined && <div className={sus >= b.policy.thresholdKt ? "text-green" : "text-red"}>{sus} ≥ {b.policy.thresholdKt} ✓</div>}</td>
                       <td className="px-3 py-2 num">{usdc(e.args.amount)} USDC{b && <div className="text-[11px] text-dim">{formatUsd(b.policy.coverageUsd)} modeled</div>}</td>
