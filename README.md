@@ -214,6 +214,18 @@ Full script with lines to say: [`docs/DEMO_SCRIPT.md`](docs/DEMO_SCRIPT.md). The
 
 Never claim a payout the explorer doesn't show.
 
+## QuickNode Stream configuration
+
+| Setting | Value | Why |
+| --- | --- | --- |
+| Network | Arc testnet | Where `ParametricReserve` is deployed |
+| Dataset | Logs | Payouts, deferrals and accepted observations are all contract events |
+| Filter | [`web/quicknode/stream-filter.js`](web/quicknode/stream-filter.js) | Keeps only logs emitted by the reserve contract and returns `null` for every other block, so the app receives a few events instead of every block |
+| Destination | Webhook, `POST https://resilienceos-six.vercel.app/api/stream` | Pushes each payout to the dashboard as it is mined, without waiting for the block explorer to index it |
+| Security token | Set as `QUICKNODE_STREAM_TOKEN` on the host | The route recomputes HMAC-SHA256 over nonce + timestamp + body and rejects anything else with 401 |
+
+The receiver is `web/src/lib/chain/stream.ts`. It decodes each log with the contract ABI, ignores logs from any other address, de-duplicates by transaction and log index, and merges the events into `/api/state`. Events are held in process memory, so after a cold start the app falls back to the explorer and RPC read until the next delivery. `GET /api/stream` shows delivery counters, and the header shows a "QuickNode Stream" badge once a delivery has arrived.
+
 ## Installation
 
 Requirements: Node 20+ (tested on 24), [Foundry](https://getfoundry.sh).
@@ -286,7 +298,7 @@ NHC's own Beryl report independently lists KPSX at 50 kt sustained / 77 kt peak 
 | Sponsor | Status |
 | --- | --- |
 | **Circle Arc** | Core. Settlement contract on Arc testnet paying Circle USDC. Gas is paid in USDC. |
-| QuickNode Streams | Not integrated. The planned design is a Stream filtered to `ParametricReserve` events with a webhook into `/api/state` to replace polling. This needs a QuickNode account, so we do not claim the bounty. |
+| QuickNode Streams | Receiver built, Stream not yet created. `/api/stream` accepts a Streams webhook, verifies its HMAC signature, decodes `ParametricReserve` logs and merges them into the dashboard state. Verified locally with a signed payload built from a real payout receipt. See [QuickNode Stream configuration](#quicknode-stream-configuration). We claim the bounty only once the Stream is live. |
 | ElevenLabs | Not integrated. We do not claim it. |
 | Grok Bot, Gemini Prediction Markets | Not used. Neither fits the product. |
 

@@ -48,6 +48,11 @@ function Shell() {
             <Activity size={12} />
             {chain?.deployed ? `Arc testnet · block ${Number(chain.blockNumber).toLocaleString()}` : chainError ?? "Connecting to Arc…"}
           </span>
+          {chain?.stream?.deliveries ? (
+            <span className="hidden md:inline-flex items-center gap-1.5 rounded-full border border-cyan/30 px-2.5 py-1 text-cyan" title={`Last delivery ${chain.stream.lastDeliveryAt}`}>
+              QuickNode Stream · {chain.stream.events} events
+            </span>
+          ) : null}
           {chain?.deployed && <span className="hidden sm:inline text-muted num">Reserve <b className="text-text">{usdc(chain.reserveBalance)}</b> USDC</span>}
           {deployment?.reserve && <span className="hidden xl:inline font-mono text-dim">{deployment.reserve.slice(0, 8)}…</span>}
         </div>

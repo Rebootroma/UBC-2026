@@ -5,6 +5,7 @@ import { DEPLOYMENT, EXPLORER, policyKey } from "./config";
 import { publicClient } from "./server";
 import { BUSINESSES } from "../data";
 import { POLICY_STATUS, type PolicyStatus } from "../types";
+import { streamEvents, streamStatus } from "./stream";
 
 export interface ChainPolicy {
   businessId: string;
@@ -42,6 +43,8 @@ export interface ChainState {
   policies: ChainPolicy[];
   events: ChainEvent[];
   fetchedAt: string;
+  /** QuickNode Streams delivery counters (see ./stream.ts). */
+  stream?: { configured: boolean; deliveries: number; events: number; lastDeliveryAt: string | null; lastBlock: string | null };
   error?: string;
 }
 
@@ -125,8 +128,9 @@ export async function readChainState(maxAgeMs = 4000): Promise<ChainState> {
         payoutUnits: p.payoutAmount.toString(),
         holder: p.holder,
       })),
-      events,
+      events: mergeEvents(events, streamEvents()),
       fetchedAt: new Date().toISOString(),
+      stream: streamStatus(),
     };
     cache = { at: Date.now(), state };
     return state;
@@ -136,6 +140,13 @@ export async function readChainState(maxAgeMs = 4000): Promise<ChainState> {
 }
 
 /** Reserve contract logs via the Arc Blockscout API, falling back to chunked eth_getLogs. */
+/** Stream-delivered events arrive before the explorer indexes them; merge both, newest first, one entry per log. */
+function mergeEvents(indexed: ChainEvent[], pushed: ChainEvent[]): ChainEvent[] {
+  const byKey = new Map<string, ChainEvent>();
+  for (const e of [...pushed, ...indexed]) byKey.set(`${e.txHash.toLowerCase()}-${e.logIndex}`, e);
+  return [...byKey.values()].sort((a, b) => Number(BigInt(b.blockNumber) - BigInt(a.blockNumber)) || b.logIndex - a.logIndex);
+}
+
 async function readReserveEvents(reserve: Address): Promise<ChainEvent[]> {
   try {
     const out: ChainEvent[] = [];
